@@ -20,12 +20,12 @@ html {
   --bg-white: #fff;
   --dark-border: #5a5a5a;
   --light-border: rgba(85, 86, 90, 0.12);
-  --yellow-bg: rgb(214, 163, 67);
-  --yellow-text: rgb(214, 163, 67, 0.12);
-  --green-bg: #91c561;
-  --green-text: hsla(91, 46%, 58%, 0.12);
-  --grey-bg: rgb(89, 89, 89);
-  --grey-text: rgba(89, 89, 89, 0.717);
+  --yellow-bg: rgba(254, 207, 119, 0.74);
+  --yellow-text: rgba(64, 42, 0, 0.751);
+  --green-bg: #bbef8ac7;
+  --green-text: hsla(91, 90%, 15%, 0.842);
+  --grey-bg: rgb(213, 212, 212);
+  --grey-text: rgba(8, 8, 8, 0.993);
 
   --higlight-color: #2562be;
 
@@ -80,4 +80,68 @@ main {
 .ticket-btn.active {
   border-color: var(--higlight-color);
   color: var(--higlight-color);
+}
+
+.table-container {
+  padding-right: 4rem;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-family: var(--bodyFont);
+  letter-spacing: 0.5px;
+}
+
+th,
+td {
+  border: 1px solid var(--light-border);
+  text-align: left;
+  padding: 8px;
+  font-size: 32px;
+}
+
+th {
+  padding: 12px 8px;
+  background-color: #dfdede;
+  font-weight: 400;
+  font-size: 16px;
+  color: #292929;
+  text-align: center;
+}
+
+td {
+  background-color: #fcfcfc;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.completed {
+  background-color: var(--green-bg);
+  color: var(--green-text);
+}
+
+.pending,
+.in-progress {
+  background-color: var(--yellow-bg);
+  color: var(--yellow-text);
+}
+
+.not-started {
+  background-color: var(--grey-bg);
+  color: var(--grey-text);
+}
+
+.table-value {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 2rem;
+}
+
+.table-value:hover {
+  background-color: #c04c4c;
 }

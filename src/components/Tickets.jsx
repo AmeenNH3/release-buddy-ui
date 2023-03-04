@@ -11,7 +11,7 @@ function Tickets({ tickets }) {
       {tickets.map((item) => {
         return (
           <button
-            id={item.id}
+            key={item.id}
             className={item.id == activeTicket ? "ticket-btn active" : "ticket-btn"}
             onClick={() => dispatch(setActiveTicket(item.id))}
           >
