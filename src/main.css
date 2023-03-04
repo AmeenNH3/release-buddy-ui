@@ -1,0 +1,52 @@
+*,
+::after,
+::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* fonts */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,600;0,700;0,800;1,600;1,700;1,800&display=swap");
+
+html {
+  font-size: 100%;
+  /* width: 100%; */
+}
+
+:root {
+  --bg-color: #e4e4e4;
+  --bg-white: #fff;
+  --dark-border: #5a5a5a;
+  --light-border: rgba(85, 86, 90, 0.12);
+  --yellow-bg: rgb(214, 163, 67);
+  --yellow-text: rgb(214, 163, 67, 0.12);
+  --green-bg: #91c561;
+  --green-text: hsla(91, 46%, 58%, 0.12);
+  --grey-bg: rgb(89, 89, 89);
+  --grey-text: rgba(89, 89, 89, 0.12);
+
+  --higlight-color: #2562be;
+
+  --headingFont: "Nunito", Sans-Serif;
+  --bodyFont: "Poppins", Sans-Serif;
+
+  --letterSpacing: 1px;
+}
+
+body {
+  font-family: var(--bodyFont);
+  background-color: var(--bg-color);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+main {
+  background-color: var(--bg-white);
+  width: 90vw;
+  min-height: 90vh;
+}
