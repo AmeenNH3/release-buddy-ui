@@ -7,7 +7,13 @@ function TableRow({ stack }) {
   return (
     <tr>
       {keys.map((item, index) => {
-        return <TableValue key={index} value={stack[item] ? stack[item] : "-"}></TableValue>;
+        return (
+          <TableValue
+            key={index}
+            id={stack.id}
+            value={stack[item] ? stack[item] : "-"}
+          ></TableValue>
+        );
       })}
       {/* <TableValue key={1} value={stack.id}></TableValue>
       <TableValue key={2} value={stack.stackName}></TableValue>
