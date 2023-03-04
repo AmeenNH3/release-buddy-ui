@@ -25,18 +25,20 @@ html {
   --green-bg: #91c561;
   --green-text: hsla(91, 46%, 58%, 0.12);
   --grey-bg: rgb(89, 89, 89);
-  --grey-text: rgba(89, 89, 89, 0.12);
+  --grey-text: rgba(89, 89, 89, 0.717);
 
   --higlight-color: #2562be;
 
   --headingFont: "Nunito", Sans-Serif;
   --bodyFont: "Poppins", Sans-Serif;
+  --buttonFont: "Courier New", Courier, monospace;
 
   --letterSpacing: 1px;
 }
 
 body {
   font-family: var(--bodyFont);
+
   background-color: var(--bg-color);
   width: 100vw;
   height: 100vh;
@@ -49,4 +51,33 @@ main {
   background-color: var(--bg-white);
   width: 90vw;
   min-height: 90vh;
+  padding-left: 2rem;
+  padding-top: 4rem;
+}
+
+.tickets-container {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 2rem;
+}
+.ticket-btn {
+  border: none;
+  background-color: none;
+  background: none;
+  border: 1px solid var(--light-border);
+  color: var(--grey-text);
+  padding: 9px 22px;
+  transition: all 0.3s;
+  cursor: pointer;
+  font-weight: 600;
+  font-family: var(--buttonFont);
+}
+.ticket-btn:hover {
+  border-color: var(--higlight-color);
+  color: var(--higlight-color);
+}
+
+.ticket-btn.active {
+  border-color: var(--higlight-color);
+  color: var(--higlight-color);
 }
