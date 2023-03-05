@@ -1,14 +1,7 @@
 import React from "react";
 import TableRow from "./TableRow";
 import { useState } from "react";
-function Table({ data }) {
-  const [tableEditLock, settableEditLock] = useState(false);
-
-  function changeTableEditLock() {
-    console.log(tableEditLock);
-    settableEditLock((prev) => !prev);
-  }
-
+function Table({ data, tableEditLock, changeTableEditLock }) {
   let stacksData = data[0].stacks;
   let tableHeaders = [
     "S.No",

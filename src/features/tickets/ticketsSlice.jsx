@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const ticketsSlice = createSlice({
-  name: "tickets",
+  name: "active",
   initialState: {
     activeTicket: 1,
   },

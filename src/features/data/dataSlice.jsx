@@ -1,5 +1,28 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
+
+function changeDataHelper(data, ticketID, stackID, keyName, changeValue) {
+  const dataNew = data.map((ticket) => {
+    if (ticket.id == ticketID) {
+      let newTicket = { ...ticket };
+      let newStacks = ticket.stacks;
+      newStacks = newStacks.map((item) => {
+        if (item.id == stackID) {
+          let stack = { ...item };
+          console.log(keyName);
+          stack[keyName] = changeValue;
+          return stack;
+        }
+        return item;
+      });
+      newTicket = { ...newTicket, stacks: newStacks };
+      return newTicket;
+    }
+    return ticket;
+  });
+
+  return dataNew;
+}
 
 export const dataSlice = createSlice({
   name: "datas",
@@ -222,11 +245,12 @@ export const dataSlice = createSlice({
   },
   reducers: {
     changeState: (state, action) => {
-      const row = action.payload.id.charAt(0);
+      let activeTicket = action.payload.activeTicket;
+      let row = action.payload.id.charAt(0);
+      let key = action.payload.headerName;
+      let value = action.payload.changedValue;
 
-      let stack = state.data[row];
-
-      console.log(stack);
+      state.data = changeDataHelper(state.data, activeTicket, row, key, value);
     },
   },
 });

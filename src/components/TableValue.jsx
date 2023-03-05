@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { changeState } from "../features/data/dataSlice";
 import { isStatus, getIconName, selectOptions } from "./helper";
 
-function TableValue({ value, id, tableEditLock, changeTableEditLock }) {
+function TableValue({ value, id, tableEditLock, changeTableEditLock, headerName }) {
   const dispatch = useDispatch();
+  const activeTicket = useSelector((state) => state.active.activeTicket);
 
   const [isEditable, setisEditable] = useState(false);
   const [statusValue, setStatusValue] = useState(value);
@@ -12,7 +13,7 @@ function TableValue({ value, id, tableEditLock, changeTableEditLock }) {
   const handleChange = (e) => {
     setStatusValue(e.target.value);
     setisEditable((prev) => !prev);
-    dispatch(changeState({ id: id, changedValue: e.target.value }));
+    dispatch(changeState({ id, changedValue: e.target.value, activeTicket, headerName }));
     changeTableEditLock();
   };
 
