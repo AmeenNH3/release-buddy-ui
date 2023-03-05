@@ -4,6 +4,11 @@ import { useState } from "react";
 function Table({ data }) {
   const [tableEditLock, settableEditLock] = useState(false);
 
+  function changeTableEditLock() {
+    console.log(tableEditLock);
+    settableEditLock((prev) => !prev);
+  }
+
   let stacksData = data[0].stacks;
   let tableHeaders = [
     "S.No",
@@ -34,7 +39,14 @@ function Table({ data }) {
         </thead>
         <tbody>
           {stacks.map((stack, index) => {
-            return <TableRow key={index} stack={stack}></TableRow>;
+            return (
+              <TableRow
+                key={index}
+                stack={stack}
+                tableEditLock={tableEditLock}
+                changeTableEditLock={changeTableEditLock}
+              ></TableRow>
+            );
           })}
         </tbody>
       </table>
