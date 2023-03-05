@@ -56,7 +56,7 @@ export const dataSlice = createSlice({
             mergedToM: "completed",
             testedM: "completed",
             bundleNo: 1245,
-            status: "completed",
+            status: "done",
           },
           {
             id: 5,
@@ -68,7 +68,7 @@ export const dataSlice = createSlice({
             mergedToM: "not-started",
             testedM: "not-started",
             bundleNo: null,
-            status: "not-started",
+            status: "yet to start",
           },
         ],
       },
@@ -123,7 +123,7 @@ export const dataSlice = createSlice({
             mergedToM: "completed",
             testedM: "completed",
             bundleNo: 1245,
-            status: "completed",
+            status: "done",
           },
           {
             id: 5,
@@ -135,7 +135,7 @@ export const dataSlice = createSlice({
             mergedToM: "not-started",
             testedM: "not-started",
             bundleNo: null,
-            status: "not-started",
+            status: "yet to start",
           },
         ],
       },
@@ -190,7 +190,7 @@ export const dataSlice = createSlice({
             mergedToM: "completed",
             testedM: "completed",
             bundleNo: 1245,
-            status: "completed",
+            status: "done",
           },
           {
             id: 5,
@@ -202,7 +202,7 @@ export const dataSlice = createSlice({
             mergedToM: "not-started",
             testedM: "not-started",
             bundleNo: null,
-            status: "not-started",
+            status: "yet to start",
           },
           {
             id: 6,
@@ -214,12 +214,23 @@ export const dataSlice = createSlice({
             mergedToM: "not-started",
             testedM: "not-started",
             bundleNo: null,
-            status: "not-started",
+            status: "yet to start",
           },
         ],
       },
     ],
   },
+  reducers: {
+    changeState: (state, action) => {
+      const row = action.payload.id.charAt(0);
+
+      let stack = state.data[row];
+
+      console.log(stack);
+    },
+  },
 });
 
 export default dataSlice.reducer;
+
+export const { changeState } = dataSlice.actions;

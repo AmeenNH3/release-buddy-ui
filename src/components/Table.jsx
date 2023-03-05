@@ -1,6 +1,9 @@
 import React from "react";
 import TableRow from "./TableRow";
+import { useState } from "react";
 function Table({ data }) {
+  const [tableEditLock, settableEditLock] = useState(false);
+
   let stacksData = data[0].stacks;
   let tableHeaders = [
     "S.No",
@@ -16,7 +19,6 @@ function Table({ data }) {
   ];
   //For creating a copy of stacksData
   let stacks = JSON.parse(JSON.stringify(stacksData));
-  console.log(stacks);
   //Sorting  by id
   stacks = stacks.sort((a, b) => a.id - b.id);
 

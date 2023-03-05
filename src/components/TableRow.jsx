@@ -5,7 +5,14 @@ function TableRow({ stack }) {
   return (
     <tr>
       {keys.map((item, index) => {
-        return <TableValue key={index} value={stack[item] ? stack[item] : "-"}></TableValue>;
+        return (
+          <TableValue
+            editLock={false}
+            key={`${stack.id}:${index}:${stack[item]}`}
+            id={`${stack.id}:${index}:${stack[item]}`}
+            value={stack[item] ? stack[item] : "-"}
+          ></TableValue>
+        );
       })}
     </tr>
   );
