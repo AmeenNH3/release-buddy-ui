@@ -1,7 +1,7 @@
 import React from "react";
 import TableRow from "./TableRow";
 function Table({ data }) {
-  let datas = data[0].stacks;
+  let stacksData = data[0].stacks;
   let tableHeaders = [
     "S.No",
     "Stack Name",
@@ -14,9 +14,10 @@ function Table({ data }) {
     "Bundle No",
     "Status",
   ];
-
-  let stacks = JSON.parse(JSON.stringify(datas));
+  //For creating a copy of stacksData
+  let stacks = JSON.parse(JSON.stringify(stacksData));
   console.log(stacks);
+  //Sorting  by id
   stacks = stacks.sort((a, b) => a.id - b.id);
 
   return (
