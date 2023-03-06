@@ -38,8 +38,8 @@ function App() {
   return (
     <>
       <main className="main container">
-        {/* <Navbar></Navbar>
-        <Stats></Stats> */}
+        <Navbar></Navbar>
+        <Stats></Stats>
         <Tickets
           tickets={tickets}
           tableEditLock={tableEditLock}

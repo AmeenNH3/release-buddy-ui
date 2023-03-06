@@ -43,7 +43,7 @@ export const dataSlice = createSlice({
             mergedToM: "not-started",
             testedM: "not-started",
             bundleNo: null,
-            status: "in-progress",
+            status: "pending",
           },
           {
             id: 2,
@@ -55,7 +55,7 @@ export const dataSlice = createSlice({
             mergedToM: "not-started",
             testedM: "not-started",
             bundleNo: null,
-            status: "in-progress",
+            status: "pending",
           },
           {
             id: 3,
@@ -67,7 +67,7 @@ export const dataSlice = createSlice({
             mergedToM: "not-started",
             testedM: "not-started",
             bundleNo: null,
-            status: "in-progress",
+            status: "pending",
           },
           {
             id: 4,
@@ -78,8 +78,8 @@ export const dataSlice = createSlice({
             testedD: "completed",
             mergedToM: "completed",
             testedM: "completed",
-            bundleNo: 1245,
-            status: "done",
+            bundleNo: 134,
+            status: "completed",
           },
           {
             id: 5,
@@ -91,7 +91,7 @@ export const dataSlice = createSlice({
             mergedToM: "not-started",
             testedM: "not-started",
             bundleNo: null,
-            status: "yet to start",
+            status: "completed",
           },
         ],
       },
@@ -110,7 +110,7 @@ export const dataSlice = createSlice({
             mergedToM: "not-started",
             testedM: "not-started",
             bundleNo: null,
-            status: "in-progress",
+            status: "pending",
           },
           {
             id: 1,
@@ -122,7 +122,7 @@ export const dataSlice = createSlice({
             mergedToM: "not-started",
             testedM: "not-started",
             bundleNo: null,
-            status: "in-progress",
+            status: "pending",
           },
           {
             id: 4,
@@ -134,7 +134,7 @@ export const dataSlice = createSlice({
             mergedToM: "not-started",
             testedM: "not-started",
             bundleNo: null,
-            status: "in-progress",
+            status: "pending",
           },
           {
             id: 3,
@@ -146,7 +146,7 @@ export const dataSlice = createSlice({
             mergedToM: "completed",
             testedM: "completed",
             bundleNo: 1245,
-            status: "done",
+            status: "completed",
           },
           {
             id: 5,
@@ -158,7 +158,7 @@ export const dataSlice = createSlice({
             mergedToM: "not-started",
             testedM: "not-started",
             bundleNo: null,
-            status: "yet to start",
+            status: "not-started",
           },
         ],
       },
@@ -177,7 +177,7 @@ export const dataSlice = createSlice({
             mergedToM: "not-started",
             testedM: "not-started",
             bundleNo: null,
-            status: "in-progress",
+            status: "pending",
           },
           {
             id: 2,
@@ -189,7 +189,7 @@ export const dataSlice = createSlice({
             mergedToM: "not-started",
             testedM: "not-started",
             bundleNo: null,
-            status: "in-progress",
+            status: "not-started",
           },
           {
             id: 3,
@@ -201,7 +201,7 @@ export const dataSlice = createSlice({
             mergedToM: "not-started",
             testedM: "not-started",
             bundleNo: null,
-            status: "in-progress",
+            status: "pending",
           },
           {
             id: 1,
@@ -213,7 +213,7 @@ export const dataSlice = createSlice({
             mergedToM: "completed",
             testedM: "completed",
             bundleNo: 1245,
-            status: "done",
+            status: "completed",
           },
           {
             id: 5,
@@ -225,7 +225,7 @@ export const dataSlice = createSlice({
             mergedToM: "not-started",
             testedM: "not-started",
             bundleNo: null,
-            status: "yet to start",
+            status: "not-started",
           },
           {
             id: 6,
@@ -237,7 +237,7 @@ export const dataSlice = createSlice({
             mergedToM: "not-started",
             testedM: "not-started",
             bundleNo: null,
-            status: "yet to start",
+            status: "not-started",
           },
         ],
       },

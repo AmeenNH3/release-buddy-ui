@@ -24,7 +24,7 @@ function Table({ data, tableEditLock, changeTableEditLock }) {
     <div className="table-container">
       <table>
         <thead>
-          <tr>
+          <tr className="table-header-row">
             {tableHeaders.map((item, index) => {
               return <th key={index}>{item}</th>;
             })}

@@ -4,7 +4,7 @@ import { keyHeaders } from "../App";
 function TableRow({ stack, tableEditLock, changeTableEditLock }) {
   const keys = Object.keys(stack);
   return (
-    <tr>
+    <tr className="table-row">
       {keys.map((item, index) => {
         return (
           <TableValue
