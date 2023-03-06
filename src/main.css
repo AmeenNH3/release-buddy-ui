@@ -21,12 +21,19 @@ html {
   --dark-border: #5a5a5a;
   --light-border: rgba(85, 86, 90, 0.12);
 
-  --yellow-bg: hsla(39, 100%, 76%, 0.74);
+  --yellow-bg: rgba(255, 212, 133, 0.39);
   --yellow-text: rgba(64, 42, 0, 0.751);
   --green-bg: hsla(91, 73%, 71%, 0.78);
   --green-text: hsla(91, 90%, 15%, 0.842);
   --grey-bg: rgb(220, 220, 220);
   --grey-text: rgba(8, 8, 8, 0.993);
+
+  --yellow-bg: rgba(214, 162, 67, 0.273);
+  --yellow-text: rgb(214, 162, 67);
+  --green-bg: rgba(145, 197, 97, 0.273);
+  --green-text: rgb(145, 197, 97);
+  --grey-bg: rgba(89, 89, 89, 0.273);
+  --grey-text: #595959;
 
   --higlight-color: #2562be;
 
@@ -40,7 +47,7 @@ html {
 body {
   font-family: var(--bodyFont);
 
-  background-color: var(--bg-color);
+  background-color: var(--bg-white);
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -86,14 +93,19 @@ main {
 
 .table-container {
   /* padding-right: 4rem; */
-  padding: 0rem 2rem 0rem 2rem;
+  padding: 0rem 2rem 2rem 2rem;
+  height: 25rem;
 }
 
 table {
-  border-collapse: collapse;
+  /* border-collapse: separate !important; */
   width: 100%;
+
   font-family: var(--bodyFont);
   letter-spacing: 0.5px;
+  /* border: 5px solid red; */
+  border-radius: 12px;
+  overflow: scroll;
 }
 
 th,
@@ -106,11 +118,12 @@ td {
 
 th {
   padding: 12px 8px;
-  background-color: #dfdede;
+  background-color: #e7e7e7;
   font-weight: 400;
   font-size: 16px;
-  color: #292929;
+  color: rgba(18, 18, 18, 1);
   text-align: center;
+  padding: 1.4rem 0.5rem;
 }
 
 td {
@@ -194,7 +207,7 @@ select {
 } */
 
 .navbar {
-  padding: 2rem 2rem 0rem 2rem;
+  padding: 0.5rem 2rem 0rem 2rem;
   /* background-color: #2562be; */
   display: flex;
   align-items: center;
@@ -267,7 +280,7 @@ button {
 
 .stats-box {
   border: 2px solid #ababab;
-  padding: 1.5rem 3rem 1.5rem 1rem;
+  padding: 1.5rem 3rem 1.5rem 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -281,20 +294,23 @@ button {
 .stats-line {
   width: 1px;
   height: 30px;
-  background-color: #a9a9a9;
+  background-color: #dfdfdf;
 }
 
 .not-stared-stats {
-  border-color: var(--grey-text);
-  color: var(--grey-text);
+  border-color: rgba(89, 89, 89);
+  color: rgba(89, 89, 89);
+  box-shadow: 0px 3px 9px 0px rgba(89, 89, 89, 0.205);
 }
 
 .pending-stats {
-  border-color: #d9ce0c;
-  color: #d9ce0c;
+  border-color: rgb(214, 162, 67);
+  color: rgb(214, 162, 67);
+  box-shadow: 0px 3px 9px 0px rgba(214, 163, 67, 0.205);
 }
 
 .completed-stats {
-  border-color: #0cd91d;
-  color: #0cd91d;
+  border-color: rgb(145, 197, 97);
+  color: rgb(145, 197, 97);
+  box-shadow: 0px 3px 9px 0px rgba(145, 197, 97, 0.205);
 }

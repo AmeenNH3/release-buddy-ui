@@ -105,7 +105,6 @@ function TableValue({ value, id, tableEditLock, changeTableEditLock, headerName 
       </td>
     );
   } else {
-    console.log("came here");
     return (
       <td className="table-status-value">
         <div className={`table-value status ${statusValue}`}>
