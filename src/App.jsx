@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
-import Navbar from "./components/Navbar";
-import Stats from "./components/Stats";
-import Table from "./components/Table";
-import Tickets from "./components/Tickets";
+import Navbar from "./components/Navbar/Navbar";
+import Stats from "./components/Stats/Stats";
+import Table from "./components/Table/Table";
+import Tickets from "./components/Tickets/Tickets";
 
 export const keyHeaders = [
   "id",

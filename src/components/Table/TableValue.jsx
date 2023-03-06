@@ -1,8 +1,8 @@
 import { head } from "lodash";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { changeState } from "../features/data/dataSlice";
-import { isStatus, getIconName, selectOptions } from "./helper";
+import { modifyData } from "../../features/data/dataSlice";
+import { isStatus, getIconName, selectOptions } from "../helper";
 
 function TableValue({ value, id, tableEditLock, changeTableEditLock, headerName }) {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ function TableValue({ value, id, tableEditLock, changeTableEditLock, headerName 
 
     if (isStatus(statusValue)) {
       setisEditable((prev) => !prev);
-      dispatch(changeState({ id, changedValue: e.target.value, activeTicket, headerName }));
+      dispatch(modifyData({ id, changedValue: e.target.value, activeTicket, headerName }));
       changeTableEditLock();
     }
   };

@@ -37,8 +37,11 @@ html {
 
   --higlight-color: #2562be;
 
+  /* font-family: "Arima Madurai", cursive;
+  font-family: "Coda", cursive;
+  font-family: "Poiret One", cursive; */
   --headingFont: "Nunito", Sans-Serif;
-  --bodyFont: "Poppins", Sans-Serif;
+  --bodyFont: "Nunito", sans-serif;
   --buttonFont: "Courier New", Courier, monospace;
 
   --letterSpacing: 1px;
@@ -66,7 +69,7 @@ main {
 .tickets-container {
   display: flex;
   gap: 8px;
-  margin-bottom: 2rem;
+  margin-bottom: -2rem;
   padding: 3rem 2rem 0rem 2rem;
 }
 .ticket-btn {
@@ -95,6 +98,8 @@ main {
   /* padding-right: 4rem; */
   padding: 0rem 2rem 2rem 2rem;
   height: 25rem;
+  display: flex;
+  flex-direction: column;
 }
 
 table {
@@ -183,13 +188,13 @@ select {
   width: 100%;
   padding: 0.4rem 0;
 }
-
 .table-input-value {
   width: 100px !important;
   padding: 6px 0px 6px 12px;
   font-size: 14px;
   border: 1px solid rgb(160, 160, 160);
   border-radius: 3px;
+  outline: none;
 }
 
 .table-status-value {
@@ -313,4 +318,124 @@ button {
   border-color: rgb(145, 197, 97);
   color: rgb(145, 197, 97);
   box-shadow: 0px 3px 9px 0px rgba(145, 197, 97, 0.205);
+}
+
+.stacks-button-container {
+  margin-left: auto;
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.stacks-btn {
+  padding: 9px 12px;
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
+.add-new-btn {
+  color: #3f7c35;
+  border-color: #3f7c35;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.delete-btn {
+  color: #a90c0c;
+  border-color: #a90c0c;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.add-new-btn:hover {
+  background-color: #3f7c35;
+  color: #fff;
+}
+
+.delete-btn:hover {
+  background-color: #a90c0c;
+  color: #fff;
+}
+
+.new-table-value-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  width: 600px;
+  padding: 2rem;
+  z-index: 10;
+  box-shadow: 0px 6px 4px rgba(0, 0, 0, 0.429);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-container {
+  width: 500px;
+  /* background-color: red; */
+}
+.select-container {
+  display: grid;
+  /* flex-direction: column; */
+  grid-template-columns: 100px 1fr;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+label {
+  font-size: 12px;
+}
+.input-container > input {
+  width: 100%;
+  padding: 12px 8px;
+  border: none;
+  border-bottom: 1px solid rgb(203, 203, 203);
+  outline: none;
+}
+
+.input-container > select {
+  border: none;
+  outline: none;
+}
+
+.form-button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.form-action-button {
+  border: 1px solid #555;
+  padding: 9px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.submit-btn {
+  background-color: #2562be;
+  color: #fff;
+}
+
+.submit-btn:hover {
+  background-color: #fff;
+  border-color: #2562be;
+  color: #2562be;
+}
+
+.cancel-btn:hover {
+  background-color: #fff;
+  border-color: #be2525;
+  color: #be2525;
+}
+
+.form-heading {
+  margin-bottom: 1rem;
 }

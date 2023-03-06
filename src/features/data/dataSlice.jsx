@@ -244,7 +244,7 @@ export const dataSlice = createSlice({
     ],
   },
   reducers: {
-    changeState: (state, action) => {
+    modifyData: (state, action) => {
       let activeTicket = action.payload.activeTicket;
       let row = action.payload.id.charAt(0);
       let key = action.payload.headerName;
@@ -252,9 +252,10 @@ export const dataSlice = createSlice({
 
       state.data = changeDataHelper(state.data, activeTicket, row, key, value);
     },
+    addNewStack: (state, action) => {},
   },
 });
 
 export default dataSlice.reducer;
 
-export const { changeState } = dataSlice.actions;
+export const { modifyData } = dataSlice.actions;

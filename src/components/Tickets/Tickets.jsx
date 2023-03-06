@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setActiveTicket } from "../features/tickets/ticketsSlice";
+import { setActiveTicket } from "../../features/tickets/ticketsSlice";
 
 function Tickets({ tickets, tableEditLock, changeTableEditLock }) {
   const activeTicket = useSelector((state) => state.active.activeTicket);

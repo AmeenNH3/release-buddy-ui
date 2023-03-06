@@ -1,6 +1,6 @@
 import React from "react";
 import TableValue from "./TableValue";
-import { keyHeaders } from "../App";
+import { keyHeaders } from "../../App";
 function TableRow({ stack, tableEditLock, changeTableEditLock }) {
   const keys = Object.keys(stack);
   return (
