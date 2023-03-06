@@ -256,3 +256,45 @@ button {
   transition: all 0.3s;
   cursor: pointer;
 }
+
+.stats-container {
+  padding: 2rem 2rem 0rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6rem;
+}
+
+.stats-box {
+  border: 2px solid #ababab;
+  padding: 1.5rem 3rem 1.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  font-weight: 400;
+}
+.stats-box > h2 {
+  font-weight: 400;
+}
+
+.stats-line {
+  width: 1px;
+  height: 30px;
+  background-color: #a9a9a9;
+}
+
+.not-stared-stats {
+  border-color: var(--grey-text);
+  color: var(--grey-text);
+}
+
+.pending-stats {
+  border-color: #d9ce0c;
+  color: #d9ce0c;
+}
+
+.completed-stats {
+  border-color: #0cd91d;
+  color: #0cd91d;
+}
