@@ -9,6 +9,7 @@ function Table({ data, tableEditLock, changeTableEditLock }) {
 
   const stacksToBeDeleted = useSelector((state) => state.active.checkedStacks);
   const activeTicket = useSelector((state) => state.active.activeTicket);
+  const [forceUpdate, setforceUpdate] = useState(false);
   let stacksData = data[0].stacks;
   let tableHeaders = [
     "",
@@ -43,6 +44,7 @@ function Table({ data, tableEditLock, changeTableEditLock }) {
             onClick={() => {
               console.log("dispatched");
               dispatch(deleteStacks({ activeTicket, stacksToBeDeleted }));
+              setforceUpdate(!forceUpdate);
             }}
           >
             Delete
@@ -65,6 +67,7 @@ function Table({ data, tableEditLock, changeTableEditLock }) {
                   stack={stack}
                   tableEditLock={tableEditLock}
                   changeTableEditLock={changeTableEditLock}
+                  forceUpdate={forceUpdate}
                 ></TableRow>
               );
             })}

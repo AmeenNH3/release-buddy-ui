@@ -7,7 +7,7 @@ import { useState, useEffect, useReducer } from "react";
 import { addToCheckedStacks, removeFromCheckedStacks } from "../../features/tickets/ticketsSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-function TableRow({ stack, tableEditLock, changeTableEditLock, index }) {
+function TableRow({ stack, tableEditLock, changeTableEditLock, index, forceUpdate }) {
   const activeTicket = useSelector((state) => state.active.activeTicket);
   // const [changeInActiveTicket, setchangeInActiveTicket] = useState(activeTicket);
   const dispatch = useDispatch();
@@ -29,6 +29,10 @@ function TableRow({ stack, tableEditLock, changeTableEditLock, index }) {
     if (isChecked == true) setIsChecked(false);
   }, [activeTicket]);
 
+  useEffect(() => {
+    //this is just to trigger unchecking of all checked stacks upon delete action
+    if (isChecked == true) setIsChecked(false);
+  }, [forceUpdate]);
   return (
     <tr className="table-row">
       <td>
