@@ -91,3 +91,23 @@ export function deleteStacksHelper(data, ticketID, stacksToDelete) {
 
   return dataNew;
 }
+
+export function findStatus(stack) {
+  let sum =
+    getStatusValue(stack.testedLB) +
+    getStatusValue(stack.mergedToD) +
+    getStatusValue(stack.testedD) +
+    getStatusValue(stack.mergedToM) +
+    getStatusValue(stack.testedM);
+
+  if (sum == 5) return "completed";
+  if (sum == -5) return "not-started";
+
+  return "pending";
+}
+
+export function getStatusValue(value) {
+  if (value == "pending") return 0;
+  if (value == "not-started") return -1;
+  if (value == "completed") return 1;
+}

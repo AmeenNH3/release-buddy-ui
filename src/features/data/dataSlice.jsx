@@ -233,7 +233,7 @@ export const dataSlice = createSlice({
     addNewStack: (state, action) => {
       let activeTicket = action.payload.activeTicket;
       let dataN = action.payload.newStackData;
-
+      console.log(dataN);
       state.data = addNewStackHelper(state.data, activeTicket, dataN);
     },
     deleteStacks: (state, action) => {

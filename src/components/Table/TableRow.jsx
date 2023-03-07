@@ -57,6 +57,7 @@ function TableRow({ stack, tableEditLock, changeTableEditLock, index, forceUpdat
             id={stack.id}
             value={stack[item] ? stack[item] : "-"}
             rowIndex={index}
+            stack={stack}
           ></TableValue>
         );
       })}

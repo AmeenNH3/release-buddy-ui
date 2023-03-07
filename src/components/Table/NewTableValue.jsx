@@ -1,5 +1,5 @@
 import React from "react";
-import { selectOptions } from "../helper";
+import { findStatus, selectOptions } from "../helper";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useDispatch, useSelector } from "react-redux";
@@ -34,7 +34,13 @@ function NewTableValue({ showModalHandler }) {
       mergedToM: mergedToM == "" ? "not-started" : mergedToM,
       testedM: testedM == "" ? "not-started" : testedM,
       bundleNo,
-      status: status == "" ? "not-started" : status,
+      status: findStatus({
+        testedLB: testedLB == "" ? "not-started" : testedLB,
+        mergedToD: mergedToD == "" ? "not-started" : mergedToD,
+        testedD: testedD == "" ? "not-started" : testedD,
+        mergedToM: mergedToM == "" ? "not-started" : mergedToM,
+        testedM: testedM == "" ? "not-started" : testedM,
+      }),
     });
 
     dispatch(
@@ -44,13 +50,19 @@ function NewTableValue({ showModalHandler }) {
           id: uuidv4(),
           stackName,
           localBranch,
-          testedLD: testedLB == "" ? "not-started" : testedLB,
+          testedLB: testedLB == "" ? "not-started" : testedLB,
           mergedToD: mergedToD == "" ? "not-started" : mergedToD,
           testedD: testedD == "" ? "not-started" : testedD,
           mergedToM: mergedToM == "" ? "not-started" : mergedToM,
           testedM: testedM == "" ? "not-started" : testedM,
           bundleNo,
-          status: status == "" ? "not-started" : status,
+          status: findStatus({
+            testedLB: testedLB == "" ? "not-started" : testedLB,
+            mergedToD: mergedToD == "" ? "not-started" : mergedToD,
+            testedD: testedD == "" ? "not-started" : testedD,
+            mergedToM: mergedToM == "" ? "not-started" : mergedToM,
+            testedM: testedM == "" ? "not-started" : testedM,
+          }),
         },
       })
     );
@@ -172,9 +184,10 @@ function NewTableValue({ showModalHandler }) {
               onChange={(e) => setbundleNo(e.target.value)}
             />
           </div>
-          <div className="input-container  select-container">
+          {/* <div className="input-container  select-container">
             <label htmlFor="status">Status</label>
             <select
+              disabled
               name="status"
               id="status"
               value={status}
@@ -186,7 +199,7 @@ function NewTableValue({ showModalHandler }) {
                 </option>
               ))}
             </select>
-          </div>
+          </div> */}
           <div className="form-button-container">
             <button className="form-action-button submit-btn" type="submit">
               Submit
