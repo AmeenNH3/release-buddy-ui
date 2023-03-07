@@ -35,3 +35,59 @@ export const selectOptions = [
     value: "completed",
   },
 ];
+
+export function changeDataHelper(data, ticketID, stackID, keyName, changeValue) {
+  const dataNew = data.map((ticket) => {
+    if (ticket.id == ticketID) {
+      let newTicket = { ...ticket };
+      let newStacks = [...ticket.stacks];
+      newStacks = newStacks.map((item) => {
+        if (item.id == stackID) {
+          let stack = { ...item };
+
+          stack[keyName] = changeValue;
+          return stack;
+        }
+        return item;
+      });
+      newTicket = { ...newTicket, stacks: newStacks };
+      return newTicket;
+    }
+    return ticket;
+  });
+
+  return dataNew;
+}
+
+export function addNewStackHelper(data, ticketID, newStackData) {
+  const dataNew = data.map((ticket) => {
+    if (ticket.id == ticketID) {
+      let newTicket = { ...ticket };
+      newTicket.stacks.push(newStackData);
+      return newTicket;
+    }
+    return ticket;
+  });
+  return dataNew;
+}
+
+export function deleteStacksHelper(data, ticketID, stacksToDelete) {
+  const dataNew = data.map((ticket) => {
+    if (ticket.id == ticketID) {
+      let newTicket = { ...ticket };
+
+      let newStacks = newTicket.stacks;
+
+      newStacks = newStacks.filter((item) => {
+        if (stacksToDelete.includes(item.id) == false) return item;
+      });
+
+      newTicket.stacks = newStacks;
+
+      return newTicket;
+    }
+    return ticket;
+  });
+
+  return dataNew;
+}

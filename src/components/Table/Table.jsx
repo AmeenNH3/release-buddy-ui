@@ -2,7 +2,13 @@ import React from "react";
 import TableRow from "./TableRow";
 import { useState, useReducer } from "react";
 import NewTableValue from "./NewTableValue";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteStacks } from "../../features/data/dataSlice";
 function Table({ data, tableEditLock, changeTableEditLock }) {
+  const dispatch = useDispatch();
+
+  const stacksToBeDeleted = useSelector((state) => state.active.checkedStacks);
+  const activeTicket = useSelector((state) => state.active.activeTicket);
   let stacksData = data[0].stacks;
   let tableHeaders = [
     "",
@@ -17,10 +23,6 @@ function Table({ data, tableEditLock, changeTableEditLock }) {
     "Bundle No",
     "Status",
   ];
-  // For creating a copy of stacksData
-  // let stacks = JSON.parse(JSON.stringify(stacksData));
-  // Sorting  by id
-  // stacks = stacks.sort((a, b) => a.id - b.id);
 
   const [addNewValue, setaddNewValue] = useState(false);
 
@@ -36,7 +38,15 @@ function Table({ data, tableEditLock, changeTableEditLock }) {
           <button className="stacks-btn add-new-btn" onClick={() => setaddNewValue(true)}>
             + add new
           </button>
-          <button className="stacks-btn delete-btn"> Delete</button>
+          <button
+            className="stacks-btn delete-btn"
+            onClick={() => {
+              console.log("dispatched");
+              dispatch(deleteStacks({ activeTicket, stacksToBeDeleted }));
+            }}
+          >
+            Delete
+          </button>
         </div>
         <table>
           <thead>

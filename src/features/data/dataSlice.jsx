@@ -1,40 +1,6 @@
 import { createSlice, current } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
-
-function changeDataHelper(data, ticketID, stackID, keyName, changeValue) {
-  const dataNew = data.map((ticket) => {
-    if (ticket.id == ticketID) {
-      let newTicket = { ...ticket };
-      let newStacks = [...ticket.stacks];
-      newStacks = newStacks.map((item) => {
-        if (item.id == stackID) {
-          let stack = { ...item };
-
-          stack[keyName] = changeValue;
-          return stack;
-        }
-        return item;
-      });
-      newTicket = { ...newTicket, stacks: newStacks };
-      return newTicket;
-    }
-    return ticket;
-  });
-
-  return dataNew;
-}
-
-function addNewStackHelper(data, ticketID, newStackData) {
-  const dataNew = data.map((ticket) => {
-    if (ticket.id == ticketID) {
-      let newTicket = { ...ticket };
-      newTicket.stacks.push(newStackData);
-      return newTicket;
-    }
-    return ticket;
-  });
-  return dataNew;
-}
+import { changeDataHelper, addNewStackHelper, deleteStacksHelper } from "../../components/helper";
 
 export const dataSlice = createSlice({
   name: "datas",
@@ -270,9 +236,16 @@ export const dataSlice = createSlice({
 
       state.data = addNewStackHelper(state.data, activeTicket, dataN);
     },
+    deleteStacks: (state, action) => {
+      let activeTicket = action.payload.activeTicket;
+      let stacksIdsToBeDeleted = action.payload.stacksToBeDeleted;
+      console.log(activeTicket);
+      console.log(stacksIdsToBeDeleted);
+      state.data = deleteStacksHelper(state.data, activeTicket, stacksIdsToBeDeleted);
+    },
   },
 });
 
 export default dataSlice.reducer;
 
-export const { modifyData, addNewStack } = dataSlice.actions;
+export const { modifyData, addNewStack, deleteStacks } = dataSlice.actions;

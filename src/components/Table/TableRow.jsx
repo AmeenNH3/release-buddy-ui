@@ -28,12 +28,6 @@ function TableRow({ stack, tableEditLock, changeTableEditLock, index }) {
   useEffect(() => {
     if (isChecked == true) setIsChecked(false);
   }, [activeTicket]);
-  // useEffect(() => {
-  //   console.log("Rendered");
-  //   setIsChecked(false);
-  // }, [changeInActiveTicket]);
-
-  console.log(activeTicket);
 
   return (
     <tr className="table-row">
