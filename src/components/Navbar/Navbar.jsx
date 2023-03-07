@@ -10,7 +10,7 @@ function Navbar() {
       </div>
       <div className="links-container">
         <button className="logout-btn">
-          <span> Logout</span>
+          Logout
           <span className="logout-icon">
             <ion-icon name="exit-outline"></ion-icon>
           </span>

@@ -19,6 +19,7 @@ export const keyHeaders = [
 ];
 
 function App() {
+  const [dummyState, setdummyState] = useState(false);
   const [tableEditLock, settableEditLock] = useState(false);
   const activeTicket = useSelector((state) => state.active.activeTicket);
   const dummyData = useSelector((state) => state.datas.data);
@@ -29,7 +30,6 @@ function App() {
     };
   });
   const tableData = dummyData.filter((item) => item.id == activeTicket);
-
   function changeTableEditLock(val) {
     if (val == null) {
       settableEditLock((prev) => !prev);

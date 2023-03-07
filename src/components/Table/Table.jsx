@@ -1,6 +1,6 @@
 import React from "react";
 import TableRow from "./TableRow";
-import { useState } from "react";
+import { useState, useReducer } from "react";
 import NewTableValue from "./NewTableValue";
 function Table({ data, tableEditLock, changeTableEditLock }) {
   let stacksData = data[0].stacks;

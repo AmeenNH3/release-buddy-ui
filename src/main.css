@@ -212,7 +212,7 @@ select {
 } */
 
 .navbar {
-  padding: 0.5rem 2rem 0rem 2rem;
+  padding: 2rem 2rem 0rem 2rem;
   /* background-color: #2562be; */
   display: flex;
   align-items: center;
@@ -220,6 +220,7 @@ select {
 }
 
 button {
+  font-family: var(--bodyFont);
   border: none;
   background: none;
 }
