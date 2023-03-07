@@ -21,6 +21,7 @@ function Tickets({ tickets, tableEditLock, changeTableEditLock }) {
           </button>
         );
       })}
+      <button className="ticket-btn create-ticket-btn">+ Create new ticket</button>
     </div>
   );
 }

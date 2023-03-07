@@ -5,23 +5,24 @@ import NewTableValue from "./NewTableValue";
 function Table({ data, tableEditLock, changeTableEditLock }) {
   let stacksData = data[0].stacks;
   let tableHeaders = [
+    "",
     "S.No",
     "Stack Name",
     "Local Branch",
-    "Tested LB",
-    "Merged to D",
-    "Tested D",
-    " Merged to M",
-    "Tested M",
+    "Tested Local Branch",
+    "Merged to Develop",
+    "Tested Develop",
+    " Merged to Master",
+    "Tested Master",
     "Bundle No",
     "Status",
   ];
-  //For creating a copy of stacksData
-  let stacks = JSON.parse(JSON.stringify(stacksData));
-  //Sorting  by id
-  stacks = stacks.sort((a, b) => a.id - b.id);
+  // For creating a copy of stacksData
+  // let stacks = JSON.parse(JSON.stringify(stacksData));
+  // Sorting  by id
+  // stacks = stacks.sort((a, b) => a.id - b.id);
 
-  const [addNewValue, setaddNewValue] = useState(true);
+  const [addNewValue, setaddNewValue] = useState(false);
 
   function showModalHandler() {
     setaddNewValue((prev) => !prev);
@@ -33,7 +34,6 @@ function Table({ data, tableEditLock, changeTableEditLock }) {
       <div className="table-container">
         <div className="stacks-button-container">
           <button className="stacks-btn add-new-btn" onClick={() => setaddNewValue(true)}>
-            {" "}
             + add new
           </button>
           <button className="stacks-btn delete-btn"> Delete</button>
@@ -47,10 +47,11 @@ function Table({ data, tableEditLock, changeTableEditLock }) {
             </tr>
           </thead>
           <tbody>
-            {stacks.map((stack, index) => {
+            {stacksData.map((stack, index) => {
               return (
                 <TableRow
                   key={index}
+                  index={index}
                   stack={stack}
                   tableEditLock={tableEditLock}
                   changeTableEditLock={changeTableEditLock}

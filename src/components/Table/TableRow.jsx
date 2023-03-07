@@ -1,21 +1,68 @@
 import React from "react";
 import TableValue from "./TableValue";
 import { keyHeaders } from "../../App";
-function TableRow({ stack, tableEditLock, changeTableEditLock }) {
+import { v4 as uuidv4 } from "uuid";
+import TableValueV2 from "./TableValueV2";
+import { useState, useEffect } from "react";
+import { addToCheckedStacks, removeFromCheckedStacks } from "../../features/tickets/ticketsSlice";
+import { useDispatch } from "react-redux";
+
+function TableRow({ stack, tableEditLock, changeTableEditLock, index }) {
+  const dispatch = useDispatch();
   const keys = Object.keys(stack);
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleCheckboxChange = () => {
+    console.log(isChecked);
+    setIsChecked((prev) => !prev);
+
+    // if (isChecked == true) {
+    //   dispatch(addToCheckedStacks(stack.id));
+    // } else {
+    //   dispatch(removeFromCheckedStacks(stack.id));
+    // }
+  };
+  useEffect(() => {
+    if (isChecked == true) {
+      dispatch(addToCheckedStacks(stack.id));
+    } else {
+      dispatch(removeFromCheckedStacks(stack.id));
+    }
+  }, [isChecked]);
+
   return (
     <tr className="table-row">
-      {keys.map((item, index) => {
+      <td>
+        <input
+          type="checkbox"
+          name={stack.id}
+          value={isChecked}
+          checked={isChecked}
+          onChange={handleCheckboxChange}
+        />
+      </td>
+      {keys.map((item, i) => {
         return (
           <TableValue
             tableEditLock={tableEditLock}
             changeTableEditLock={changeTableEditLock}
-            headerName={keyHeaders[index]}
+            headerName={keyHeaders[i]}
             editLock={false}
-            key={`${stack.id}:${index}:${stack[item]}`}
-            id={`${stack.id}:${index}:${stack[item]}`}
+            key={uuidv4()}
+            id={stack.id}
             value={stack[item] ? stack[item] : "-"}
+            rowIndex={index}
           ></TableValue>
+          // <TableValueV2
+          //   tableEditLock={tableEditLock}
+          //   changeTableEditLock={changeTableEditLock}
+          //   headerName={keyHeaders[i]}
+          //   editLock={false}
+          //   key={uuidv4()}
+          //   id={stack.id}
+          //   value={stack[item] ? stack[item] : "-"}
+          //   rowIndex={index}
+          // ></TableValueV2>
         );
       })}
     </tr>

@@ -1,28 +1,42 @@
 import { head } from "lodash";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { modifyData } from "../../features/data/dataSlice";
 import { isStatus, getIconName, selectOptions } from "../helper";
+import { toggleEditLock } from "../../features/tickets/ticketsSlice";
 
-function TableValue({ value, id, tableEditLock, changeTableEditLock, headerName }) {
+function TableValue({ value, id, tableEditLock, changeTableEditLock, headerName, rowIndex }) {
   const dispatch = useDispatch();
   const activeTicket = useSelector((state) => state.active.activeTicket);
-
+  const lockTable = useSelector((state) => state.active.isEditLocked);
+  const [isEditLocked, setisEditLocked] = useState(lockTable);
   const [isEditable, setisEditable] = useState(false);
   const [statusValue, setStatusValue] = useState(value);
 
+  useEffect(() => {
+    setisEditLocked(lockTable);
+    return () => {
+      setisEditLocked(false);
+    };
+  }, [lockTable]);
+
   const handleChange = (e) => {
     setStatusValue(e.target.value);
-
     if (isStatus(statusValue)) {
       setisEditable((prev) => !prev);
       dispatch(modifyData({ id, changedValue: e.target.value, activeTicket, headerName }));
-      changeTableEditLock();
+      // changeTableEditLock();
+      dispatch(toggleEditLock());
     }
   };
 
   let className = null;
   let iconName = null;
+
+  if (isStatus(statusValue)) {
+    className = statusValue;
+    iconName = getIconName(statusValue);
+  }
 
   if (isEditable && isStatus(value) == null && headerName != "id") {
     return (
@@ -33,9 +47,11 @@ function TableValue({ value, id, tableEditLock, changeTableEditLock, headerName 
           type="text"
           onChange={handleChange}
           onKeyDown={(e) => {
-            if (e.key === "Enter") {
+            if (isEditLocked == true && e.key === "Enter") {
               setisEditable((prev) => !prev);
-              changeTableEditLock();
+              // changeTableEditLock();
+              dispatch(toggleEditLock());
+              dispatch(modifyData({ id, changedValue: statusValue, activeTicket, headerName }));
             }
           }}
         />
@@ -48,13 +64,13 @@ function TableValue({ value, id, tableEditLock, changeTableEditLock, headerName 
       <td>
         <div className="select-container">
           <select
-            hideSelectedValue
             value={statusValue}
             onChange={handleChange}
             onKeyDown={(e) => {
-              if (e.key === "Enter" || e.key === "Escape") {
+              if ((isEditLocked == true && e.key === "Enter") || e.key === "Escape") {
                 setisEditable((prev) => !prev);
-                changeTableEditLock();
+                // changeTableEditLock();
+                dispatch(toggleEditLock());
               }
             }}
           >
@@ -69,32 +85,33 @@ function TableValue({ value, id, tableEditLock, changeTableEditLock, headerName 
     );
   }
 
-  if (isStatus(statusValue)) {
-    className = statusValue;
-    iconName = getIconName(statusValue);
-  }
-
-  if (className == null) {
+  if (className == null && headerName != "id") {
     return (
       <td
         className="table-value"
         onClick={() => {
-          if (tableEditLock != true && headerName != "id") {
+          // if (tableEditLock != true && headerName != "id") {
+          if (isEditLocked == false && headerName != "id") {
             setisEditable((prev) => !prev);
-            changeTableEditLock();
+            // changeTableEditLock();
+            dispatch(toggleEditLock());
           }
         }}
       >
         {statusValue}
       </td>
     );
+  } else if (className == null && headerName == "id") {
+    return <td className="table-value">{rowIndex + 1}</td>;
   } else if (className != null && headerName != "status") {
     return (
       <td
         onClick={() => {
-          if (tableEditLock != true && headerName != "status") {
+          // if (tableEditLock != true && headerName != "status") {
+          if (isEditLocked == false && headerName != "status") {
             setisEditable((prev) => !prev);
-            changeTableEditLock();
+            // changeTableEditLock();
+            dispatch(toggleEditLock());
           }
         }}
       >

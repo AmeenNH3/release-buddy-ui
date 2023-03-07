@@ -5,11 +5,11 @@ function changeDataHelper(data, ticketID, stackID, keyName, changeValue) {
   const dataNew = data.map((ticket) => {
     if (ticket.id == ticketID) {
       let newTicket = { ...ticket };
-      let newStacks = ticket.stacks;
+      let newStacks = [...ticket.stacks];
       newStacks = newStacks.map((item) => {
         if (item.id == stackID) {
           let stack = { ...item };
-          console.log(keyName);
+
           stack[keyName] = changeValue;
           return stack;
         }
@@ -24,6 +24,18 @@ function changeDataHelper(data, ticketID, stackID, keyName, changeValue) {
   return dataNew;
 }
 
+function addNewStackHelper(data, ticketID, newStackData) {
+  const dataNew = data.map((ticket) => {
+    if (ticket.id == ticketID) {
+      let newTicket = { ...ticket };
+      newTicket.stacks.push(newStackData);
+      return newTicket;
+    }
+    return ticket;
+  });
+  return dataNew;
+}
+
 export const dataSlice = createSlice({
   name: "datas",
   initialState: {
@@ -34,7 +46,7 @@ export const dataSlice = createSlice({
         name: "PPI Change",
         stacks: [
           {
-            id: 1,
+            id: uuidv4(),
             stackName: "stackOne",
             localBranch: "ppi_change",
             testedLB: "completed",
@@ -46,7 +58,7 @@ export const dataSlice = createSlice({
             status: "pending",
           },
           {
-            id: 2,
+            id: uuidv4(),
             stackName: "stackTwo",
             localBranch: "ppi_change",
             testedLB: "completed",
@@ -58,7 +70,7 @@ export const dataSlice = createSlice({
             status: "pending",
           },
           {
-            id: 3,
+            id: uuidv4(),
             stackName: "stackThree",
             localBranch: "ppi_change",
             testedLB: "completed",
@@ -70,7 +82,7 @@ export const dataSlice = createSlice({
             status: "pending",
           },
           {
-            id: 4,
+            id: uuidv4(),
             stackName: "stackFour",
             localBranch: "ppi_change",
             testedLB: "completed",
@@ -82,7 +94,7 @@ export const dataSlice = createSlice({
             status: "completed",
           },
           {
-            id: 5,
+            id: uuidv4(),
             stackName: "stackFive",
             localBranch: "ppi_change",
             testedLB: "not-started",
@@ -101,7 +113,7 @@ export const dataSlice = createSlice({
         name: "Mongo Atlas",
         stacks: [
           {
-            id: 2,
+            id: uuidv4(),
             stackName: "stackOne",
             localBranch: "mongo_atlas",
             testedLB: "completed",
@@ -113,7 +125,7 @@ export const dataSlice = createSlice({
             status: "pending",
           },
           {
-            id: 1,
+            id: uuidv4(),
             stackName: "stackTwo",
             localBranch: "mongo_atlas",
             testedLB: "completed",
@@ -125,7 +137,7 @@ export const dataSlice = createSlice({
             status: "pending",
           },
           {
-            id: 4,
+            id: uuidv4(),
             stackName: "stackThree",
             localBranch: "mongo_atlas",
             testedLB: "completed",
@@ -137,7 +149,7 @@ export const dataSlice = createSlice({
             status: "pending",
           },
           {
-            id: 3,
+            id: uuidv4(),
             stackName: "stackFour",
             localBranch: "mongo_atlas",
             testedLB: "completed",
@@ -149,7 +161,7 @@ export const dataSlice = createSlice({
             status: "completed",
           },
           {
-            id: 5,
+            id: uuidv4(),
             stackName: "stackFive",
             localBranch: "mongo_atlas",
             testedLB: "not-started",
@@ -168,7 +180,7 @@ export const dataSlice = createSlice({
         name: "Monthly Release",
         stacks: [
           {
-            id: 4,
+            id: uuidv4(),
             stackName: "stackOne",
             localBranch: "bug-fix",
             testedLB: "completed",
@@ -180,7 +192,7 @@ export const dataSlice = createSlice({
             status: "pending",
           },
           {
-            id: 2,
+            id: uuidv4(),
             stackName: "stackTwo",
             localBranch: "region-change",
             testedLB: "completed",
@@ -192,7 +204,7 @@ export const dataSlice = createSlice({
             status: "not-started",
           },
           {
-            id: 3,
+            id: uuidv4(),
             stackName: "stackThree",
             localBranch: "bug-fix",
             testedLB: "completed",
@@ -204,7 +216,7 @@ export const dataSlice = createSlice({
             status: "pending",
           },
           {
-            id: 1,
+            id: uuidv4(),
             stackName: "stackFour",
             localBranch: "change-logo",
             testedLB: "completed",
@@ -216,7 +228,7 @@ export const dataSlice = createSlice({
             status: "completed",
           },
           {
-            id: 5,
+            id: uuidv4(),
             stackName: "stackFive",
             localBranch: "issue-fix",
             testedLB: "not-started",
@@ -228,7 +240,7 @@ export const dataSlice = createSlice({
             status: "not-started",
           },
           {
-            id: 6,
+            id: uuidv4(),
             stackName: "stackSix",
             localBranch: "issue-fix",
             testedLB: "not-started",
@@ -246,16 +258,21 @@ export const dataSlice = createSlice({
   reducers: {
     modifyData: (state, action) => {
       let activeTicket = action.payload.activeTicket;
-      let row = action.payload.id.charAt(0);
+      let stackId = action.payload.id;
       let key = action.payload.headerName;
       let value = action.payload.changedValue;
-
-      state.data = changeDataHelper(state.data, activeTicket, row, key, value);
+      console.log(activeTicket, stackId, key, value);
+      state.data = changeDataHelper(state.data, activeTicket, stackId, key, value);
     },
-    addNewStack: (state, action) => {},
+    addNewStack: (state, action) => {
+      let activeTicket = action.payload.activeTicket;
+      let dataN = action.payload.newStackData;
+
+      state.data = addNewStackHelper(state.data, activeTicket, dataN);
+    },
   },
 });
 
 export default dataSlice.reducer;
 
-export const { modifyData } = dataSlice.actions;
+export const { modifyData, addNewStack } = dataSlice.actions;

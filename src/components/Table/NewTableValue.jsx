@@ -1,7 +1,15 @@
 import React from "react";
 import { selectOptions } from "../helper";
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+import { useDispatch, useSelector } from "react-redux";
+import { addNewStack } from "../../features/data/dataSlice";
+import { toggleEditLock } from "../../features/tickets/ticketsSlice";
+
 function NewTableValue({ showModalHandler }) {
+  const dispatch = useDispatch();
+  const activeTicket = useSelector((state) => state.active.activeTicket);
+
   const [stackName, setstackName] = useState("");
   const [localBranch, setlocalBranch] = useState("");
   const [bundleNo, setbundleNo] = useState("");
@@ -10,27 +18,44 @@ function NewTableValue({ showModalHandler }) {
   const [testedD, settestedD] = useState("");
   const [mergedToM, setmergedToM] = useState("");
   const [testedM, settestedM] = useState("");
+  const [status, setStatus] = useState("");
 
   const [stack, setStack] = useState(null);
 
   const submitHandler = (e) => {
     e.preventDefault();
     setStack({
-      id: 6,
+      id: uuidv4(),
       stackName,
       localBranch,
-      testedLB,
-      mergedToD,
-      testedD,
-      mergedToM,
-      testedM,
+      testedLB: testedLB == "" ? "not-started" : testedLB,
+      mergedToD: mergedToD == "" ? "not-started" : mergedToD,
+      testedD: testedD == "" ? "not-started" : testedD,
+      mergedToM: mergedToM == "" ? "not-started" : mergedToM,
+      testedM: testedM == "" ? "not-started" : testedM,
       bundleNo,
-      status: "not-started",
+      status: status == "" ? "not-started" : status,
     });
 
-    console.log(stack);
-
-    // showModalHandler();
+    dispatch(
+      addNewStack({
+        activeTicket,
+        newStackData: {
+          id: uuidv4(),
+          stackName,
+          localBranch,
+          testedLD: testedLB == "" ? "not-started" : testedLB,
+          mergedToD: mergedToD == "" ? "not-started" : mergedToD,
+          testedD: testedD == "" ? "not-started" : testedD,
+          mergedToM: mergedToM == "" ? "not-started" : mergedToM,
+          testedM: testedM == "" ? "not-started" : testedM,
+          bundleNo,
+          status: status == "" ? "not-started" : status,
+        },
+      })
+    );
+    showModalHandler();
+    dispatch(toggleEditLock(false));
   };
   return (
     <div className="new-table-value-modal">
@@ -43,6 +68,7 @@ function NewTableValue({ showModalHandler }) {
           </div> */}
           <div className="input-container">
             <input
+              required
               type="text"
               name="stackName"
               id="stackName"
@@ -148,7 +174,12 @@ function NewTableValue({ showModalHandler }) {
           </div>
           <div className="input-container  select-container">
             <label htmlFor="status">Status</label>
-            <select name="status" id="status">
+            <select
+              name="status"
+              id="status"
+              value={status}
+              onChange={(e) => setStatus(e.target.value)}
+            >
               {selectOptions.map((option, index) => (
                 <option key={index} value={option.value}>
                   {option.label}
@@ -160,7 +191,23 @@ function NewTableValue({ showModalHandler }) {
             <button className="form-action-button submit-btn" type="submit">
               Submit
             </button>
-            <button className="form-action-button cancel-btn" type="button">
+            <button
+              className="form-action-button cancel-btn"
+              type="button"
+              onClick={() => {
+                setstackName("");
+                setlocalBranch("");
+                setbundleNo("");
+                settestedLB("");
+                setmergedToD("");
+                settestedD("");
+                setmergedToM("");
+                settestedM("");
+                setStack(null);
+                showModalHandler();
+                dispatch(toggleEditLock(false));
+              }}
+            >
               Cancel
             </button>
           </div>

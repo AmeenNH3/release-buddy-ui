@@ -30,9 +30,12 @@ function App() {
   });
   const tableData = dummyData.filter((item) => item.id == activeTicket);
 
-  function changeTableEditLock() {
-    console.log(tableEditLock);
-    settableEditLock((prev) => !prev);
+  function changeTableEditLock(val) {
+    if (val == null) {
+      settableEditLock((prev) => !prev);
+    } else {
+      settableEditLock(val);
+    }
   }
 
   return (
