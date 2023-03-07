@@ -1,5 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
+import { changeDataHelper, addNewStackHelper, deleteStacksHelper } from "../../components/helper";
 
 export const dataSlice = createSlice({
   name: "datas",
@@ -11,7 +12,7 @@ export const dataSlice = createSlice({
         name: "PPI Change",
         stacks: [
           {
-            id: 1,
+            id: uuidv4(),
             stackName: "stackOne",
             localBranch: "ppi_change",
             testedLB: "completed",
@@ -20,10 +21,10 @@ export const dataSlice = createSlice({
             mergedToM: "not-started",
             testedM: "not-started",
             bundleNo: null,
-            status: "in-progress",
+            status: "pending",
           },
           {
-            id: 2,
+            id: uuidv4(),
             stackName: "stackTwo",
             localBranch: "ppi_change",
             testedLB: "completed",
@@ -32,10 +33,10 @@ export const dataSlice = createSlice({
             mergedToM: "not-started",
             testedM: "not-started",
             bundleNo: null,
-            status: "in-progress",
+            status: "pending",
           },
           {
-            id: 3,
+            id: uuidv4(),
             stackName: "stackThree",
             localBranch: "ppi_change",
             testedLB: "completed",
@@ -44,10 +45,10 @@ export const dataSlice = createSlice({
             mergedToM: "not-started",
             testedM: "not-started",
             bundleNo: null,
-            status: "in-progress",
+            status: "pending",
           },
           {
-            id: 4,
+            id: uuidv4(),
             stackName: "stackFour",
             localBranch: "ppi_change",
             testedLB: "completed",
@@ -55,11 +56,11 @@ export const dataSlice = createSlice({
             testedD: "completed",
             mergedToM: "completed",
             testedM: "completed",
-            bundleNo: 1245,
+            bundleNo: 134,
             status: "completed",
           },
           {
-            id: 5,
+            id: uuidv4(),
             stackName: "stackFive",
             localBranch: "ppi_change",
             testedLB: "not-started",
@@ -68,7 +69,7 @@ export const dataSlice = createSlice({
             mergedToM: "not-started",
             testedM: "not-started",
             bundleNo: null,
-            status: "not-started",
+            status: "completed",
           },
         ],
       },
@@ -78,7 +79,7 @@ export const dataSlice = createSlice({
         name: "Mongo Atlas",
         stacks: [
           {
-            id: 2,
+            id: uuidv4(),
             stackName: "stackOne",
             localBranch: "mongo_atlas",
             testedLB: "completed",
@@ -87,10 +88,10 @@ export const dataSlice = createSlice({
             mergedToM: "not-started",
             testedM: "not-started",
             bundleNo: null,
-            status: "in-progress",
+            status: "pending",
           },
           {
-            id: 1,
+            id: uuidv4(),
             stackName: "stackTwo",
             localBranch: "mongo_atlas",
             testedLB: "completed",
@@ -99,10 +100,10 @@ export const dataSlice = createSlice({
             mergedToM: "not-started",
             testedM: "not-started",
             bundleNo: null,
-            status: "in-progress",
+            status: "pending",
           },
           {
-            id: 4,
+            id: uuidv4(),
             stackName: "stackThree",
             localBranch: "mongo_atlas",
             testedLB: "completed",
@@ -111,10 +112,10 @@ export const dataSlice = createSlice({
             mergedToM: "not-started",
             testedM: "not-started",
             bundleNo: null,
-            status: "in-progress",
+            status: "pending",
           },
           {
-            id: 3,
+            id: uuidv4(),
             stackName: "stackFour",
             localBranch: "mongo_atlas",
             testedLB: "completed",
@@ -126,7 +127,7 @@ export const dataSlice = createSlice({
             status: "completed",
           },
           {
-            id: 5,
+            id: uuidv4(),
             stackName: "stackFive",
             localBranch: "mongo_atlas",
             testedLB: "not-started",
@@ -145,7 +146,7 @@ export const dataSlice = createSlice({
         name: "Monthly Release",
         stacks: [
           {
-            id: 4,
+            id: uuidv4(),
             stackName: "stackOne",
             localBranch: "bug-fix",
             testedLB: "completed",
@@ -154,10 +155,10 @@ export const dataSlice = createSlice({
             mergedToM: "not-started",
             testedM: "not-started",
             bundleNo: null,
-            status: "in-progress",
+            status: "pending",
           },
           {
-            id: 2,
+            id: uuidv4(),
             stackName: "stackTwo",
             localBranch: "region-change",
             testedLB: "completed",
@@ -166,10 +167,10 @@ export const dataSlice = createSlice({
             mergedToM: "not-started",
             testedM: "not-started",
             bundleNo: null,
-            status: "in-progress",
+            status: "not-started",
           },
           {
-            id: 3,
+            id: uuidv4(),
             stackName: "stackThree",
             localBranch: "bug-fix",
             testedLB: "completed",
@@ -178,10 +179,10 @@ export const dataSlice = createSlice({
             mergedToM: "not-started",
             testedM: "not-started",
             bundleNo: null,
-            status: "in-progress",
+            status: "pending",
           },
           {
-            id: 1,
+            id: uuidv4(),
             stackName: "stackFour",
             localBranch: "change-logo",
             testedLB: "completed",
@@ -193,7 +194,7 @@ export const dataSlice = createSlice({
             status: "completed",
           },
           {
-            id: 5,
+            id: uuidv4(),
             stackName: "stackFive",
             localBranch: "issue-fix",
             testedLB: "not-started",
@@ -205,7 +206,7 @@ export const dataSlice = createSlice({
             status: "not-started",
           },
           {
-            id: 6,
+            id: uuidv4(),
             stackName: "stackSix",
             localBranch: "issue-fix",
             testedLB: "not-started",
@@ -220,6 +221,31 @@ export const dataSlice = createSlice({
       },
     ],
   },
+  reducers: {
+    modifyData: (state, action) => {
+      let activeTicket = action.payload.activeTicket;
+      let stackId = action.payload.id;
+      let key = action.payload.headerName;
+      let value = action.payload.changedValue;
+      console.log(activeTicket, stackId, key, value);
+      state.data = changeDataHelper(state.data, activeTicket, stackId, key, value);
+    },
+    addNewStack: (state, action) => {
+      let activeTicket = action.payload.activeTicket;
+      let dataN = action.payload.newStackData;
+
+      state.data = addNewStackHelper(state.data, activeTicket, dataN);
+    },
+    deleteStacks: (state, action) => {
+      let activeTicket = action.payload.activeTicket;
+      let stacksIdsToBeDeleted = action.payload.stacksToBeDeleted;
+      console.log(activeTicket);
+      console.log(stacksIdsToBeDeleted);
+      state.data = deleteStacksHelper(state.data, activeTicket, stacksIdsToBeDeleted);
+    },
+  },
 });
 
 export default dataSlice.reducer;
+
+export const { modifyData, addNewStack, deleteStacks } = dataSlice.actions;
