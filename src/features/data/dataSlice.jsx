@@ -69,7 +69,7 @@ export const dataSlice = createSlice({
             mergedToM: "not-started",
             testedM: "not-started",
             bundleNo: null,
-            status: "completed",
+            status: "not-started",
           },
         ],
       },
@@ -167,7 +167,7 @@ export const dataSlice = createSlice({
             mergedToM: "not-started",
             testedM: "not-started",
             bundleNo: null,
-            status: "not-started",
+            status: "pending",
           },
           {
             id: uuidv4(),

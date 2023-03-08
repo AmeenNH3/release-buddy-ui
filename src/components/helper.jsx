@@ -46,6 +46,9 @@ export function changeDataHelper(data, ticketID, stackID, keyName, changeValue) 
           let stack = { ...item };
 
           stack[keyName] = changeValue;
+
+          stack["status"] = findStatus(stack);
+
           return stack;
         }
         return item;
