@@ -446,3 +446,13 @@ label {
   font-weight: 500;
   border: none;
 }
+
+.greyed-out {
+  border-color: #a6a6a6;
+  color: #a6a6a6;
+}
+
+.greyed-out:hover {
+  background-color: #979797;
+  color: #c6c6c6;
+}

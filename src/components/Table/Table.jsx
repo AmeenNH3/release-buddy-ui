@@ -40,11 +40,17 @@ function Table({ data, tableEditLock, changeTableEditLock }) {
             + add new
           </button>
           <button
-            className="stacks-btn delete-btn"
+            title={`${stacksToBeDeleted.length == 0 ? "select stacks to delete" : ""} `}
+            className={` ${
+              stacksToBeDeleted.length == 0
+                ? "stacks-btn delete-btn greyed-out"
+                : "stacks-btn delete-btn"
+            }`}
             onClick={() => {
-              console.log("dispatched");
-              dispatch(deleteStacks({ activeTicket, stacksToBeDeleted }));
-              setforceUpdate(!forceUpdate);
+              if (stacksToBeDeleted.length > 0) {
+                dispatch(deleteStacks({ activeTicket, stacksToBeDeleted }));
+                setforceUpdate(!forceUpdate);
+              }
             }}
           >
             Delete
