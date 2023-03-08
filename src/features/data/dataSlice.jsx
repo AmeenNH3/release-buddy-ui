@@ -7,14 +7,13 @@ export const dataSlice = createSlice({
   initialState: {
     data: [
       {
-        id: 1,
-        key: uuidv4(),
-        name: "PPI Change",
+        id: "example-ticket-100021",
+        name: "Example",
         stacks: [
           {
             id: uuidv4(),
-            stackName: "stackOne",
-            localBranch: "ppi_change",
+            stackName: "stack_one",
+            localBranch: "local-branch-one",
             testedLB: "completed",
             mergedToD: "pending",
             testedD: "not-started",
@@ -25,8 +24,8 @@ export const dataSlice = createSlice({
           },
           {
             id: uuidv4(),
-            stackName: "stackTwo",
-            localBranch: "ppi_change",
+            stackName: "stack_two",
+            localBranch: "local-branch-two",
             testedLB: "completed",
             mergedToD: "completed",
             testedD: "not-started",
@@ -37,8 +36,8 @@ export const dataSlice = createSlice({
           },
           {
             id: uuidv4(),
-            stackName: "stackThree",
-            localBranch: "ppi_change",
+            stackName: "stack_three",
+            localBranch: "local-branch-three",
             testedLB: "completed",
             mergedToD: "completed",
             testedD: "pending",
@@ -49,8 +48,8 @@ export const dataSlice = createSlice({
           },
           {
             id: uuidv4(),
-            stackName: "stackFour",
-            localBranch: "ppi_change",
+            stackName: "stack_four",
+            localBranch: "local-branch-four",
             testedLB: "completed",
             mergedToD: "completed",
             testedD: "completed",
@@ -61,8 +60,8 @@ export const dataSlice = createSlice({
           },
           {
             id: uuidv4(),
-            stackName: "stackFive",
-            localBranch: "ppi_change",
+            stackName: "stack_five",
+            localBranch: "local-branch-five",
             testedLB: "not-started",
             mergedToD: "not-started",
             testedD: "not-started",
@@ -74,8 +73,7 @@ export const dataSlice = createSlice({
         ],
       },
       {
-        id: 2,
-        key: uuidv4(),
+        id: uuidv4(),
         name: "Mongo Atlas",
         stacks: [
           {
@@ -141,8 +139,7 @@ export const dataSlice = createSlice({
         ],
       },
       {
-        id: 3,
-        key: uuidv4(),
+        id: uuidv4(),
         name: "Monthly Release",
         stacks: [
           {

@@ -72,7 +72,7 @@ function TableValue({
       <td>
         <div className="select-container">
           <select
-            value={statusValue}
+            value={"Choose an option"}
             onChange={handleChange}
             onKeyDown={(e) => {
               if ((isEditLocked == true && e.key === "Enter") || e.key === "Escape") {
@@ -82,6 +82,7 @@ function TableValue({
               }
             }}
           >
+            <option>{"Choose an option"}</option>
             {selectOptions.map((option, index) => (
               <option key={index} value={option.value}>
                 {option.label}

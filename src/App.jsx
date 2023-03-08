@@ -19,17 +19,16 @@ export const keyHeaders = [
 ];
 
 function App() {
-  const [dummyState, setdummyState] = useState(false);
   const [tableEditLock, settableEditLock] = useState(false);
   const activeTicket = useSelector((state) => state.active.activeTicket);
-  const dummyData = useSelector((state) => state.datas.data);
-  const tickets = dummyData.map((item) => {
+  const data = useSelector((state) => state.datas.data);
+  const tickets = data.map((item) => {
     return {
       id: item.id,
       name: item.name,
     };
   });
-  const tableData = dummyData.filter((item) => item.id == activeTicket);
+  const tableData = data.filter((item) => item.id == activeTicket);
   function changeTableEditLock(val) {
     if (val == null) {
       settableEditLock((prev) => !prev);

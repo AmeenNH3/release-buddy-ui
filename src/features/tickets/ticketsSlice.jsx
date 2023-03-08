@@ -11,7 +11,7 @@ function includesCheck(data, value) {
 export const ticketsSlice = createSlice({
   name: "active",
   initialState: {
-    activeTicket: 1,
+    activeTicket: "example-ticket-100021",
     isEditLocked: false,
     checkedStacks: [],
   },
