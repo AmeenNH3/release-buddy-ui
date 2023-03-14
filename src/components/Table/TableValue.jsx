@@ -5,15 +5,7 @@ import { modifyData } from "../../features/data/dataSlice";
 import { isStatus, getIconName, selectOptions, findStatus } from "../helper";
 import { toggleEditLock } from "../../features/tickets/ticketsSlice";
 
-function TableValue({
-  stack,
-  value,
-  id,
-  tableEditLock,
-  changeTableEditLock,
-  headerName,
-  rowIndex,
-}) {
+function TableValue({ stack, value, id, headerName, rowIndex }) {
   const dispatch = useDispatch();
   const activeTicket = useSelector((state) => state.active.activeTicket);
   const lockTable = useSelector((state) => state.active.isEditLocked);

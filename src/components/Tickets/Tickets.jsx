@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCheckedStacks, setActiveTicket } from "../../features/tickets/ticketsSlice";
 import { addNewTicket, deleteActiveTicket } from "../../features/data/dataSlice";
-function Tickets({ tickets, tableEditLock, changeTableEditLock }) {
+function Tickets({ tickets }) {
   const lockTable = useSelector((state) => state.active.isEditLocked);
   const [isEditLocked, setisEditLocked] = useState(lockTable);
 

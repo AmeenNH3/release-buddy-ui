@@ -5,7 +5,7 @@ import NewTableValue from "./NewTableValue";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteStacks } from "../../features/data/dataSlice";
 import { toggleEditLock } from "../../features/tickets/ticketsSlice";
-function Table({ data, tableEditLock, changeTableEditLock }) {
+function Table({ data }) {
   const dispatch = useDispatch();
 
   const stacksToBeDeleted = useSelector((state) => state.active.checkedStacks);
@@ -78,8 +78,6 @@ function Table({ data, tableEditLock, changeTableEditLock }) {
                   key={index}
                   index={index}
                   stack={stack}
-                  tableEditLock={tableEditLock}
-                  changeTableEditLock={changeTableEditLock}
                   forceUpdate={forceUpdate}
                 ></TableRow>
               );

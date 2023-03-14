@@ -7,9 +7,8 @@ import { useState, useEffect, useReducer } from "react";
 import { addToCheckedStacks, removeFromCheckedStacks } from "../../features/tickets/ticketsSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-function TableRow({ stack, tableEditLock, changeTableEditLock, index, forceUpdate }) {
+function TableRow({ stack, index, forceUpdate }) {
   const activeTicket = useSelector((state) => state.active.activeTicket);
-  // const [changeInActiveTicket, setchangeInActiveTicket] = useState(activeTicket);
   const dispatch = useDispatch();
   const keys = Object.keys(stack);
   const [isChecked, setIsChecked] = useState(false);
@@ -49,8 +48,6 @@ function TableRow({ stack, tableEditLock, changeTableEditLock, index, forceUpdat
       {keys.map((item, i) => {
         return (
           <TableValue
-            tableEditLock={tableEditLock}
-            changeTableEditLock={changeTableEditLock}
             headerName={keyHeaders[i]}
             editLock={false}
             key={uuidv4()}
