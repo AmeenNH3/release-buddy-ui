@@ -4,6 +4,7 @@ import { useState, useReducer } from "react";
 import NewTableValue from "./NewTableValue";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteStacks } from "../../features/data/dataSlice";
+import { toggleEditLock } from "../../features/tickets/ticketsSlice";
 function Table({ data, tableEditLock, changeTableEditLock }) {
   const dispatch = useDispatch();
 
@@ -36,7 +37,13 @@ function Table({ data, tableEditLock, changeTableEditLock }) {
       {addNewValue ? <NewTableValue showModalHandler={showModalHandler}></NewTableValue> : true}
       <div className="table-container">
         <div className="stacks-button-container">
-          <button className="stacks-btn add-new-btn" onClick={() => setaddNewValue(true)}>
+          <button
+            className="stacks-btn add-new-btn"
+            onClick={() => {
+              dispatch(toggleEditLock(false));
+              setaddNewValue(true);
+            }}
+          >
             + add new
           </button>
           <button

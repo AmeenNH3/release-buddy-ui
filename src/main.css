@@ -529,3 +529,82 @@ label {
 ::-webkit-scrollbar-corner {
   background: rgb(162, 162, 162);
 }
+
+.new-ticket-input-modal {
+  background-color: #ffffff;
+  width: 280px;
+  height: 140px;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  box-shadow: 0px 3px 9px 0px rgba(89, 89, 89, 0.205);
+}
+
+.new-ticket-input-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.new-ticket-input {
+  width: 200px;
+  padding: 2px;
+  border: none;
+  border-bottom: 1px solid #8e8e8e;
+  outline: none;
+}
+
+.new-ticket-btn-container {
+  display: flex;
+  gap: 1rem;
+}
+
+.new-ticket-btn {
+  padding: 6px 9px;
+  /* border: 1px solid #2562be; */
+  cursor: pointer;
+  color: #2562be;
+}
+
+.new-ticket-submit-btn:hover {
+  background-color: #2562be;
+  color: #fff;
+}
+
+.new-ticket-cancel-btn {
+  border-color: #555;
+  color: #555;
+}
+
+.new-ticket-cancel-btn:hover {
+  background-color: #555;
+  border-color: #555;
+  color: #ffffff;
+}
+
+.delete-ticket-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  transition: all 0.3s;
+}
+.delete-ticket-btn > ion-icon {
+  width: 18px;
+  height: 18px;
+  color: rgb(176, 0, 0);
+  pointer-events: none;
+  transition: all 0.3s;
+}
+
+.delete-ticket-btn:hover {
+  transform: scale(1.2);
+}

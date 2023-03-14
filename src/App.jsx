@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Navbar from "./components/Navbar/Navbar";
 import Stats from "./components/Stats/Stats";
 import Table from "./components/Table/Table";
 import Tickets from "./components/Tickets/Tickets";
-
+import { addNewTicket } from "./features/data/dataSlice";
 export const keyHeaders = [
   "id",
   "stackName",
@@ -19,6 +19,8 @@ export const keyHeaders = [
 ];
 
 function App() {
+  const dispatch = useDispatch();
+
   const [tableEditLock, settableEditLock] = useState(false);
   const activeTicket = useSelector((state) => state.active.activeTicket);
   const data = useSelector((state) => state.datas.data);
