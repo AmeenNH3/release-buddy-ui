@@ -2,10 +2,10 @@ import { head } from "lodash";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { modifyData } from "../../features/data/dataSlice";
-import { isStatus, getIconName, selectOptions } from "../helper";
+import { isStatus, getIconName, selectOptions, findStatus } from "../helper";
 import { toggleEditLock } from "../../features/tickets/ticketsSlice";
 
-function TableValue({ value, id, tableEditLock, changeTableEditLock, headerName, rowIndex }) {
+function TableValue({ stack, value, id, headerName, rowIndex }) {
   const dispatch = useDispatch();
   const activeTicket = useSelector((state) => state.active.activeTicket);
   const lockTable = useSelector((state) => state.active.isEditLocked);
@@ -64,7 +64,7 @@ function TableValue({ value, id, tableEditLock, changeTableEditLock, headerName,
       <td>
         <div className="select-container">
           <select
-            value={statusValue}
+            value={"Choose an option"}
             onChange={handleChange}
             onKeyDown={(e) => {
               if ((isEditLocked == true && e.key === "Enter") || e.key === "Escape") {
@@ -74,6 +74,7 @@ function TableValue({ value, id, tableEditLock, changeTableEditLock, headerName,
               }
             }}
           >
+            <option>{"Choose an option"}</option>
             {selectOptions.map((option, index) => (
               <option key={index} value={option.value}>
                 {option.label}
@@ -124,8 +125,8 @@ function TableValue({ value, id, tableEditLock, changeTableEditLock, headerName,
   } else {
     return (
       <td className="table-status-value">
-        <div className={`table-value status ${statusValue}`}>
-          <span>{statusValue}</span>
+        <div className={`table-value status ${findStatus(stack)}`}>
+          <span>{findStatus(stack)}</span>
         </div>
       </td>
     );

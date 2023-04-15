@@ -4,7 +4,8 @@ import { useState, useReducer } from "react";
 import NewTableValue from "./NewTableValue";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteStacks } from "../../features/data/dataSlice";
-function Table({ data, tableEditLock, changeTableEditLock }) {
+import { toggleEditLock } from "../../features/tickets/ticketsSlice";
+function Table({ data }) {
   const dispatch = useDispatch();
 
   const stacksToBeDeleted = useSelector((state) => state.active.checkedStacks);
@@ -36,15 +37,27 @@ function Table({ data, tableEditLock, changeTableEditLock }) {
       {addNewValue ? <NewTableValue showModalHandler={showModalHandler}></NewTableValue> : true}
       <div className="table-container">
         <div className="stacks-button-container">
-          <button className="stacks-btn add-new-btn" onClick={() => setaddNewValue(true)}>
+          <button
+            className="stacks-btn add-new-btn"
+            onClick={() => {
+              dispatch(toggleEditLock(false));
+              setaddNewValue(true);
+            }}
+          >
             + add new
           </button>
           <button
-            className="stacks-btn delete-btn"
+            title={`${stacksToBeDeleted.length == 0 ? "select stacks to delete" : ""} `}
+            className={` ${
+              stacksToBeDeleted.length == 0
+                ? "stacks-btn delete-btn greyed-out"
+                : "stacks-btn delete-btn"
+            }`}
             onClick={() => {
-              console.log("dispatched");
-              dispatch(deleteStacks({ activeTicket, stacksToBeDeleted }));
-              setforceUpdate(!forceUpdate);
+              if (stacksToBeDeleted.length > 0) {
+                dispatch(deleteStacks({ activeTicket, stacksToBeDeleted }));
+                setforceUpdate(!forceUpdate);
+              }
             }}
           >
             Delete
@@ -65,8 +78,6 @@ function Table({ data, tableEditLock, changeTableEditLock }) {
                   key={index}
                   index={index}
                   stack={stack}
-                  tableEditLock={tableEditLock}
-                  changeTableEditLock={changeTableEditLock}
                   forceUpdate={forceUpdate}
                 ></TableRow>
               );

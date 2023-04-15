@@ -11,7 +11,7 @@ function includesCheck(data, value) {
 export const ticketsSlice = createSlice({
   name: "active",
   initialState: {
-    activeTicket: 1,
+    activeTicket: "example-ticket-100021",
     isEditLocked: false,
     checkedStacks: [],
   },
@@ -29,19 +29,10 @@ export const ticketsSlice = createSlice({
     },
     addToCheckedStacks: (state, action) => {
       state.checkedStacks.push(action.payload);
-      // const newStack = action.payload;
-      // let data = [...state.checkedStacks];
-      // if (includesCheck(data, newStack) == false) {
-      //   state.checkedStacks = { ...state.checkedStacks, newStack };
-      // }
     },
     removeFromCheckedStacks: (state, action) => {
       let checked = state.checkedStacks.filter((stack) => stack != action.payload);
       state.checkedStacks = checked;
-      // const deleteStack = action.payload;
-      // let data = [...state.checkedStacks];
-      // if (includesCheck(data, deleteStack) == true)
-      //   state.checkedStacks = state.checkedStacks.filter((stack) => stack.id != deleteStack);
     },
     clearCheckedStacks: (state, action) => {
       state.checkedStacks = [];

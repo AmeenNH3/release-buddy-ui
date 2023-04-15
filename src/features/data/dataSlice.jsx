@@ -7,14 +7,13 @@ export const dataSlice = createSlice({
   initialState: {
     data: [
       {
-        id: 1,
-        key: uuidv4(),
-        name: "PPI Change",
+        id: "example-ticket-100021",
+        name: "Example",
         stacks: [
           {
             id: uuidv4(),
-            stackName: "stackOne",
-            localBranch: "ppi_change",
+            stackName: "stack_one",
+            localBranch: "local-branch-one",
             testedLB: "completed",
             mergedToD: "pending",
             testedD: "not-started",
@@ -25,8 +24,8 @@ export const dataSlice = createSlice({
           },
           {
             id: uuidv4(),
-            stackName: "stackTwo",
-            localBranch: "ppi_change",
+            stackName: "stack_two",
+            localBranch: "local-branch-two",
             testedLB: "completed",
             mergedToD: "completed",
             testedD: "not-started",
@@ -37,8 +36,8 @@ export const dataSlice = createSlice({
           },
           {
             id: uuidv4(),
-            stackName: "stackThree",
-            localBranch: "ppi_change",
+            stackName: "stack_three",
+            localBranch: "local-branch-three",
             testedLB: "completed",
             mergedToD: "completed",
             testedD: "pending",
@@ -49,8 +48,8 @@ export const dataSlice = createSlice({
           },
           {
             id: uuidv4(),
-            stackName: "stackFour",
-            localBranch: "ppi_change",
+            stackName: "stack_four",
+            localBranch: "local-branch-four",
             testedLB: "completed",
             mergedToD: "completed",
             testedD: "completed",
@@ -61,21 +60,140 @@ export const dataSlice = createSlice({
           },
           {
             id: uuidv4(),
-            stackName: "stackFive",
-            localBranch: "ppi_change",
+            stackName: "stack_five",
+            localBranch: "local-branch-five",
             testedLB: "not-started",
             mergedToD: "not-started",
             testedD: "not-started",
             mergedToM: "not-started",
             testedM: "not-started",
             bundleNo: null,
+            status: "not-started",
+          },
+          {
+            id: uuidv4(),
+            stackName: "stack_one",
+            localBranch: "local-branch-one",
+            testedLB: "completed",
+            mergedToD: "pending",
+            testedD: "not-started",
+            mergedToM: "not-started",
+            testedM: "not-started",
+            bundleNo: null,
+            status: "pending",
+          },
+          {
+            id: uuidv4(),
+            stackName: "stack_two",
+            localBranch: "local-branch-two",
+            testedLB: "completed",
+            mergedToD: "completed",
+            testedD: "not-started",
+            mergedToM: "not-started",
+            testedM: "not-started",
+            bundleNo: null,
+            status: "pending",
+          },
+          {
+            id: uuidv4(),
+            stackName: "stack_three",
+            localBranch: "local-branch-three",
+            testedLB: "completed",
+            mergedToD: "completed",
+            testedD: "pending",
+            mergedToM: "not-started",
+            testedM: "not-started",
+            bundleNo: null,
+            status: "pending",
+          },
+          {
+            id: uuidv4(),
+            stackName: "stack_four",
+            localBranch: "local-branch-four",
+            testedLB: "completed",
+            mergedToD: "completed",
+            testedD: "completed",
+            mergedToM: "completed",
+            testedM: "completed",
+            bundleNo: 134,
             status: "completed",
+          },
+          {
+            id: uuidv4(),
+            stackName: "stack_five",
+            localBranch: "local-branch-five",
+            testedLB: "not-started",
+            mergedToD: "not-started",
+            testedD: "not-started",
+            mergedToM: "not-started",
+            testedM: "not-started",
+            bundleNo: null,
+            status: "not-started",
+          },
+          {
+            id: uuidv4(),
+            stackName: "stack_one",
+            localBranch: "local-branch-one",
+            testedLB: "completed",
+            mergedToD: "pending",
+            testedD: "not-started",
+            mergedToM: "not-started",
+            testedM: "not-started",
+            bundleNo: null,
+            status: "pending",
+          },
+          {
+            id: uuidv4(),
+            stackName: "stack_two",
+            localBranch: "local-branch-two",
+            testedLB: "completed",
+            mergedToD: "completed",
+            testedD: "not-started",
+            mergedToM: "not-started",
+            testedM: "not-started",
+            bundleNo: null,
+            status: "pending",
+          },
+          {
+            id: uuidv4(),
+            stackName: "stack_three",
+            localBranch: "local-branch-three",
+            testedLB: "completed",
+            mergedToD: "completed",
+            testedD: "pending",
+            mergedToM: "not-started",
+            testedM: "not-started",
+            bundleNo: null,
+            status: "pending",
+          },
+          {
+            id: uuidv4(),
+            stackName: "stack_four",
+            localBranch: "local-branch-four",
+            testedLB: "completed",
+            mergedToD: "completed",
+            testedD: "completed",
+            mergedToM: "completed",
+            testedM: "completed",
+            bundleNo: 134,
+            status: "completed",
+          },
+          {
+            id: uuidv4(),
+            stackName: "stack_five",
+            localBranch: "local-branch-five",
+            testedLB: "not-started",
+            mergedToD: "not-started",
+            testedD: "not-started",
+            mergedToM: "not-started",
+            testedM: "not-started",
+            bundleNo: null,
+            status: "not-started",
           },
         ],
       },
       {
-        id: 2,
-        key: uuidv4(),
+        id: uuidv4(),
         name: "Mongo Atlas",
         stacks: [
           {
@@ -141,8 +259,7 @@ export const dataSlice = createSlice({
         ],
       },
       {
-        id: 3,
-        key: uuidv4(),
+        id: uuidv4(),
         name: "Monthly Release",
         stacks: [
           {
@@ -167,7 +284,7 @@ export const dataSlice = createSlice({
             mergedToM: "not-started",
             testedM: "not-started",
             bundleNo: null,
-            status: "not-started",
+            status: "pending",
           },
           {
             id: uuidv4(),
@@ -233,7 +350,7 @@ export const dataSlice = createSlice({
     addNewStack: (state, action) => {
       let activeTicket = action.payload.activeTicket;
       let dataN = action.payload.newStackData;
-
+      console.log(dataN);
       state.data = addNewStackHelper(state.data, activeTicket, dataN);
     },
     deleteStacks: (state, action) => {
@@ -243,9 +360,24 @@ export const dataSlice = createSlice({
       console.log(stacksIdsToBeDeleted);
       state.data = deleteStacksHelper(state.data, activeTicket, stacksIdsToBeDeleted);
     },
+    addNewTicket: (state, action) => {
+      let newTicket = {
+        id: uuidv4(),
+        name: action.payload.name,
+        stacks: [],
+      };
+      state.data = [...state.data, newTicket];
+    },
+    deleteActiveTicket: (state, action) => {
+      console.log(action.payload);
+      let newData = state.data.filter((ticket) => ticket.id != action.payload);
+
+      state.data = [...newData];
+    },
   },
 });
 
 export default dataSlice.reducer;
 
-export const { modifyData, addNewStack, deleteStacks } = dataSlice.actions;
+export const { modifyData, addNewStack, deleteStacks, addNewTicket, deleteActiveTicket } =
+  dataSlice.actions;

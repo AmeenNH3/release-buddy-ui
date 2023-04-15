@@ -1,15 +1,14 @@
 import React from "react";
 import TableValue from "./TableValue";
-import { keyHeaders } from "../../App";
+import { keyHeaders } from "../../Dashboard";
 import { v4 as uuidv4 } from "uuid";
 
 import { useState, useEffect, useReducer } from "react";
 import { addToCheckedStacks, removeFromCheckedStacks } from "../../features/tickets/ticketsSlice";
 import { useDispatch, useSelector } from "react-redux";
 
-function TableRow({ stack, tableEditLock, changeTableEditLock, index, forceUpdate }) {
+function TableRow({ stack, index, forceUpdate }) {
   const activeTicket = useSelector((state) => state.active.activeTicket);
-  // const [changeInActiveTicket, setchangeInActiveTicket] = useState(activeTicket);
   const dispatch = useDispatch();
   const keys = Object.keys(stack);
   const [isChecked, setIsChecked] = useState(false);
@@ -49,14 +48,13 @@ function TableRow({ stack, tableEditLock, changeTableEditLock, index, forceUpdat
       {keys.map((item, i) => {
         return (
           <TableValue
-            tableEditLock={tableEditLock}
-            changeTableEditLock={changeTableEditLock}
             headerName={keyHeaders[i]}
             editLock={false}
             key={uuidv4()}
             id={stack.id}
             value={stack[item] ? stack[item] : "-"}
             rowIndex={index}
+            stack={stack}
           ></TableValue>
         );
       })}
