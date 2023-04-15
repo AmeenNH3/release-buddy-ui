@@ -65,6 +65,10 @@ main {
   /* padding-left: 2rem; */
 }
 
+.container {
+  margin: 0 auto;
+  max-width: 1368px;
+}
 .tickets-container {
   display: flex;
   gap: 8px;
@@ -606,4 +610,49 @@ label {
 
 .delete-ticket-btn:hover {
   color: rgb(176, 0, 0);
+}
+
+.landing-container {
+  background-color: #e8f5f9;
+  min-height: 100vh;
+}
+
+.l-navbar-container {
+  padding-top: 2rem;
+  /* background-color: #2562be; */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.register-btn {
+  font-size: 14px;
+  font-weight: 600;
+  /* background-color: red; */
+  padding: 0.8rem 1.6rem;
+  border-radius: 9px;
+  box-shadow: 0px 4px 9px 0px rgba(89, 89, 89, 0.205);
+  cursor: pointer;
+  background-color: #fff;
+  transition: all 0.2s;
+}
+
+.register-btn:hover {
+  color: #fff;
+  background-color: #257ebe;
+}
+
+.l-hero-text-container {
+  margin-top: 9.8rem;
+}
+
+.hero-title {
+  font-size: 3.2rem;
+  line-height: 1;
+  color: #333;
+}
+.hero-text {
+  margin-top: 1rem;
+  color: #555;
+  line-height: 1.5;
 }

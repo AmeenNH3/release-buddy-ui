@@ -41,7 +41,7 @@ function Dashboard() {
 
   return (
     <>
-      <main className="main container">
+      <main className="main">
         <Navbar></Navbar>
         <Stats></Stats>
         <Tickets
