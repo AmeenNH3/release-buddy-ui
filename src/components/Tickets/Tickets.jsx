@@ -35,8 +35,23 @@ function Tickets({ tickets }) {
     e.preventDefault();
     if (newTicketName != "") {
       dispatch(addNewTicket({ name: newTicketName }));
+      setNewTicketName("");
+      setshowNewTicketInputModal(false);
     }
-    setNewTicketName("");
+  };
+
+  const deleteActiveTicketHandler = () => {
+    if (ticketsSliced.length > 1 && isEditLocked != true) {
+      console.log(ticketsSliced.length);
+      let newActiveTicket = ticketsSliced.find((item) => item.id != activeTicket);
+      let ticketToBeDeleted = activeTicket;
+      dispatch(setActiveTicket(newActiveTicket.id));
+      dispatch(deleteActiveTicket(ticketToBeDeleted));
+      dispatch(clearCheckedStacks());
+      setIsShowMoreTickets(false);
+    } else if (ticketsSliced.length == 1) {
+      alert("Atleast one ticket should be present");
+    }
   };
 
   if (!slicedTicketIDs.includes(activeTicket)) {
@@ -145,22 +160,10 @@ function Tickets({ tickets }) {
         <button
           className="delete-ticket-btn"
           title="Delete active ticket"
-          onClick={() => {
-            console.log(ticketsSliced);
-            if (ticketsSliced.length > 1 && isEditLocked != true) {
-              console.log(ticketsSliced.length);
-              let newActiveTicket = ticketsSliced.find((item) => item.id != activeTicket);
-              let ticketToBeDeleted = activeTicket;
-              dispatch(setActiveTicket(newActiveTicket.id));
-              dispatch(deleteActiveTicket(ticketToBeDeleted));
-              dispatch(clearCheckedStacks());
-              setIsShowMoreTickets(false);
-            } else if (ticketsSliced.length == 1) {
-              alert("Atleast one ticket should be present");
-            }
-          }}
+          onClick={deleteActiveTicketHandler}
         >
           <ion-icon className="delete-ticket-icon" name="trash-outline"></ion-icon>
+          <span>Delete active Ticket</span>
         </button>
       </div>
     </>
