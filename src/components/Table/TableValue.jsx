@@ -42,7 +42,7 @@ function TableValue({ stack, value, id, headerName, rowIndex }) {
     return (
       <td>
         <input
-          className="table-input-value"
+          className={`table-input-value ${headerName}`}
           value={statusValue}
           type="text"
           onChange={handleChange}
@@ -64,7 +64,7 @@ function TableValue({ stack, value, id, headerName, rowIndex }) {
       <td>
         <div className="select-container">
           <select
-            value={"Choose an option"}
+            value={"Choose"}
             onChange={handleChange}
             onKeyDown={(e) => {
               if ((isEditLocked == true && e.key === "Enter") || e.key === "Escape") {
@@ -74,7 +74,7 @@ function TableValue({ stack, value, id, headerName, rowIndex }) {
               }
             }}
           >
-            <option>{"Choose an option"}</option>
+            <option>{"Choose"}</option>
             {selectOptions.map((option, index) => (
               <option key={index} value={option.value}>
                 {option.label}
@@ -89,7 +89,7 @@ function TableValue({ stack, value, id, headerName, rowIndex }) {
   if (className == null && headerName != "id") {
     return (
       <td
-        className="table-value"
+        className={`table-value ${headerName}`}
         onClick={() => {
           // if (tableEditLock != true && headerName != "id") {
           if (isEditLocked == false && headerName != "id") {

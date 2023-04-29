@@ -31,7 +31,7 @@ function Navbar() {
 }
 
 const Wrapper = styled.div`
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   width: 64px;
@@ -41,6 +41,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 100;
   .nav-header {
     padding-top: 1.8rem;
   }

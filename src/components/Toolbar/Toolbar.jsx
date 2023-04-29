@@ -121,7 +121,7 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-left: 64px;
-  padding: 1.6rem 2.2rem;
+  padding: 1rem 2.2rem;
   color: red;
   font-family: "Nunito", sans-serif;
   button {
