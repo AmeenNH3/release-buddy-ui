@@ -43,8 +43,8 @@ function Dashboard() {
     <>
       <main className="main">
         <Navbar></Navbar>
-        <Stats></Stats>
-        <Tickets
+        {/* <Stats></Stats> */}
+        {/* <Tickets
           tickets={tickets}
           tableEditLock={tableEditLock}
           changeTableEditLock={changeTableEditLock}
@@ -53,7 +53,7 @@ function Dashboard() {
           data={tableData}
           tableEditLock={tableEditLock}
           changeTableEditLock={changeTableEditLock}
-        ></Table>
+        ></Table> */}
       </main>
     </>
   );
