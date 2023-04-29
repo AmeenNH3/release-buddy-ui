@@ -108,14 +108,20 @@ function Toolbar({ tickets }) {
           <span>Delete active Ticket</span>
         </button>
       </div>
+
+      <div className="toolbar-container-save">
+        <button className="save-data-btn">Save</button>
+      </div>
     </Wrapper>
   );
 }
 
 const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-left: 64px;
-  padding-top: 1.2rem;
-  padding-left: 1.2rem;
+  padding: 1.6rem 2.2rem;
   color: red;
   font-family: "Nunito", sans-serif;
   button {
@@ -127,6 +133,7 @@ const Wrapper = styled.div`
     font-family: "Nunito", sans-serif;
     font-weight: 500;
     /* border: 1px solid rgba(85, 86, 90, 0.22); */
+    border-radius: 4px;
   }
   .create-new-ticket-btn {
     color: #ffffff;
@@ -142,6 +149,12 @@ const Wrapper = styled.div`
   .toolbar-container-one {
     display: flex;
     gap: 1.4rem;
+  }
+  .save-data-btn {
+    background: #e4e4e4;
+  }
+  .save-data-btn:hover {
+    background: #ababab;
   }
 `;
 
