@@ -117,7 +117,7 @@ function TableValue({ stack, value, id, headerName, rowIndex }) {
         }}
       >
         <div className={className ? `${statusValue} table-value` : "table-value"}>
-          <ion-icon name={iconName}></ion-icon>
+          {/* <ion-icon name={iconName}></ion-icon> */}
           <span>{statusValue}</span>
         </div>
       </td>

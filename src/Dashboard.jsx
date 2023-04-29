@@ -17,6 +17,7 @@ export const keyHeaders = [
   "testedM",
   "bundleNo",
   "status",
+  "owner",
 ];
 
 function Dashboard() {
@@ -55,11 +56,11 @@ function Dashboard() {
           tableEditLock={tableEditLock}
           changeTableEditLock={changeTableEditLock}
         ></Tickets>
-        {/* <Table
+        <Table
           data={tableData}
           tableEditLock={tableEditLock}
           changeTableEditLock={changeTableEditLock}
-        ></Table>  */}
+        ></Table>
       </main>
     </>
   );

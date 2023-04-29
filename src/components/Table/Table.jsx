@@ -24,6 +24,7 @@ function Table({ data }) {
     "Tested Master",
     "Bundle No",
     "Status",
+    "Owner",
   ];
 
   const [addNewValue, setaddNewValue] = useState(false);
@@ -37,7 +38,7 @@ function Table({ data }) {
       {addNewValue ? <NewTableValue showModalHandler={showModalHandler}></NewTableValue> : true}
       <div className="table-container">
         <div className="stacks-button-container">
-          <button
+          {/* <button
             className="stacks-btn add-new-btn"
             onClick={() => {
               dispatch(toggleEditLock(false));
@@ -61,7 +62,7 @@ function Table({ data }) {
             }}
           >
             Delete
-          </button>
+          </button> */}
         </div>
         <table>
           <thead>

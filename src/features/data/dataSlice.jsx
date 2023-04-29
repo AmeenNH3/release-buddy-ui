@@ -21,6 +21,7 @@ export const dataSlice = createSlice({
             testedM: "not-started",
             bundleNo: null,
             status: "pending",
+            owner: "ameen",
           },
           {
             id: uuidv4(),
@@ -33,6 +34,7 @@ export const dataSlice = createSlice({
             testedM: "not-started",
             bundleNo: null,
             status: "pending",
+            owner: "ameen",
           },
           {
             id: uuidv4(),
@@ -45,6 +47,7 @@ export const dataSlice = createSlice({
             testedM: "not-started",
             bundleNo: null,
             status: "pending",
+            owner: "ameen",
           },
           {
             id: uuidv4(),
@@ -57,6 +60,7 @@ export const dataSlice = createSlice({
             testedM: "completed",
             bundleNo: 134,
             status: "completed",
+            owner: "ameen",
           },
           {
             id: uuidv4(),
@@ -69,6 +73,7 @@ export const dataSlice = createSlice({
             testedM: "not-started",
             bundleNo: null,
             status: "not-started",
+            owner: "ameen",
           },
           {
             id: uuidv4(),
@@ -81,6 +86,7 @@ export const dataSlice = createSlice({
             testedM: "not-started",
             bundleNo: null,
             status: "pending",
+            owner: "ameen",
           },
           {
             id: uuidv4(),
@@ -93,6 +99,7 @@ export const dataSlice = createSlice({
             testedM: "not-started",
             bundleNo: null,
             status: "pending",
+            owner: "ameen",
           },
           {
             id: uuidv4(),
@@ -105,6 +112,7 @@ export const dataSlice = createSlice({
             testedM: "not-started",
             bundleNo: null,
             status: "pending",
+            owner: "ameen",
           },
           {
             id: uuidv4(),
@@ -117,6 +125,7 @@ export const dataSlice = createSlice({
             testedM: "completed",
             bundleNo: 134,
             status: "completed",
+            owner: "ameen",
           },
           {
             id: uuidv4(),
@@ -129,6 +138,7 @@ export const dataSlice = createSlice({
             testedM: "not-started",
             bundleNo: null,
             status: "not-started",
+            owner: "ameen",
           },
           {
             id: uuidv4(),
@@ -141,6 +151,7 @@ export const dataSlice = createSlice({
             testedM: "not-started",
             bundleNo: null,
             status: "pending",
+            owner: "ameen",
           },
           {
             id: uuidv4(),
@@ -153,6 +164,7 @@ export const dataSlice = createSlice({
             testedM: "not-started",
             bundleNo: null,
             status: "pending",
+            owner: "ameen",
           },
           {
             id: uuidv4(),
@@ -165,6 +177,7 @@ export const dataSlice = createSlice({
             testedM: "not-started",
             bundleNo: null,
             status: "pending",
+            owner: "ameen",
           },
           {
             id: uuidv4(),
@@ -177,6 +190,7 @@ export const dataSlice = createSlice({
             testedM: "completed",
             bundleNo: 134,
             status: "completed",
+            owner: "ameen",
           },
           {
             id: uuidv4(),
@@ -189,6 +203,7 @@ export const dataSlice = createSlice({
             testedM: "not-started",
             bundleNo: null,
             status: "not-started",
+            owner: "ameen",
           },
         ],
       },
@@ -207,6 +222,7 @@ export const dataSlice = createSlice({
             testedM: "not-started",
             bundleNo: null,
             status: "pending",
+            owner: "ameen",
           },
           {
             id: uuidv4(),
@@ -219,6 +235,7 @@ export const dataSlice = createSlice({
             testedM: "not-started",
             bundleNo: null,
             status: "pending",
+            owner: "ameen",
           },
           {
             id: uuidv4(),
@@ -231,6 +248,7 @@ export const dataSlice = createSlice({
             testedM: "not-started",
             bundleNo: null,
             status: "pending",
+            owner: "ameen",
           },
           {
             id: uuidv4(),
@@ -243,6 +261,7 @@ export const dataSlice = createSlice({
             testedM: "completed",
             bundleNo: 1245,
             status: "completed",
+            owner: "ameen",
           },
           {
             id: uuidv4(),
@@ -255,6 +274,7 @@ export const dataSlice = createSlice({
             testedM: "not-started",
             bundleNo: null,
             status: "not-started",
+            owner: "ameen",
           },
         ],
       },
@@ -273,6 +293,7 @@ export const dataSlice = createSlice({
             testedM: "not-started",
             bundleNo: null,
             status: "pending",
+            owner: "ameen",
           },
           {
             id: uuidv4(),
@@ -285,6 +306,7 @@ export const dataSlice = createSlice({
             testedM: "not-started",
             bundleNo: null,
             status: "pending",
+            owner: "ameen",
           },
           {
             id: uuidv4(),
@@ -297,6 +319,7 @@ export const dataSlice = createSlice({
             testedM: "not-started",
             bundleNo: null,
             status: "pending",
+            owner: "ameen",
           },
           {
             id: uuidv4(),
@@ -309,6 +332,7 @@ export const dataSlice = createSlice({
             testedM: "completed",
             bundleNo: 1245,
             status: "completed",
+            owner: "ameen",
           },
           {
             id: uuidv4(),
@@ -321,6 +345,7 @@ export const dataSlice = createSlice({
             testedM: "not-started",
             bundleNo: null,
             status: "not-started",
+            owner: "ameen",
           },
           {
             id: uuidv4(),
@@ -333,6 +358,7 @@ export const dataSlice = createSlice({
             testedM: "not-started",
             bundleNo: null,
             status: "not-started",
+            owner: "ameen",
           },
         ],
       },
