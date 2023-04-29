@@ -50,16 +50,16 @@ function Dashboard() {
           changeTableEditLock={changeTableEditLock}
         ></Toolbar>
         {/* <Stats></Stats> */}
-        {/* <Tickets
+        <Tickets
           tickets={tickets}
           tableEditLock={tableEditLock}
           changeTableEditLock={changeTableEditLock}
         ></Tickets>
-        <Table
+        {/* <Table
           data={tableData}
           tableEditLock={tableEditLock}
           changeTableEditLock={changeTableEditLock}
-        ></Table> */}
+        ></Table>  */}
       </main>
     </>
   );

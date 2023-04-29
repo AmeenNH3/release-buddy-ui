@@ -2,7 +2,7 @@ import { set } from "lodash";
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCheckedStacks, setActiveTicket } from "../../features/tickets/ticketsSlice";
-import { addNewTicket, deleteActiveTicket } from "../../features/data/dataSlice";
+import styled from "styled-components";
 function Tickets({ tickets }) {
   const lockTable = useSelector((state) => state.active.isEditLocked);
   const [isEditLocked, setisEditLocked] = useState(lockTable);
@@ -12,8 +12,7 @@ function Tickets({ tickets }) {
 
   const [isShowMoreTickets, setIsShowMoreTickets] = useState(false);
   const [ticketsSliced, setTicketsSliced] = useState(tickets.slice(0, 4));
-  const [showNewTicketInputModal, setshowNewTicketInputModal] = useState(false);
-  const [newTicketName, setNewTicketName] = useState("");
+
   let slicedTicketIDs = ticketsSliced.map((i) => i.id);
 
   useEffect(() => {
@@ -31,29 +30,6 @@ function Tickets({ tickets }) {
     slicedTicketIDs = ticketsSliced.map((i) => i.id);
   }, [ticketsSliced]);
 
-  const newTicketFormOnSubmitHandler = (e) => {
-    e.preventDefault();
-    if (newTicketName != "") {
-      dispatch(addNewTicket({ name: newTicketName }));
-      setNewTicketName("");
-      setshowNewTicketInputModal(false);
-    }
-  };
-
-  const deleteActiveTicketHandler = () => {
-    if (ticketsSliced.length > 1 && isEditLocked != true) {
-      console.log(ticketsSliced.length);
-      let newActiveTicket = ticketsSliced.find((item) => item.id != activeTicket);
-      let ticketToBeDeleted = activeTicket;
-      dispatch(setActiveTicket(newActiveTicket.id));
-      dispatch(deleteActiveTicket(ticketToBeDeleted));
-      dispatch(clearCheckedStacks());
-      setIsShowMoreTickets(false);
-    } else if (ticketsSliced.length == 1) {
-      alert("Atleast one ticket should be present");
-    }
-  };
-
   if (!slicedTicketIDs.includes(activeTicket)) {
     let ticket = tickets.find((i) => i.id == activeTicket);
     if (ticketsSliced.length < 4) {
@@ -65,7 +41,7 @@ function Tickets({ tickets }) {
 
   return (
     <>
-      {showNewTicketInputModal ? (
+      {/* {showNewTicketInputModal ? (
         <div className="new-ticket-input-modal">
           <form className="new-ticket-input-form" onSubmit={newTicketFormOnSubmitHandler}>
             <input
@@ -96,7 +72,7 @@ function Tickets({ tickets }) {
         </div>
       ) : (
         ""
-      )}
+      )} */}
       {isShowMoreTickets ? (
         <div className="show-more-modal">
           <button
@@ -128,7 +104,7 @@ function Tickets({ tickets }) {
       ) : (
         ""
       )}
-      <div className="tickets-container">
+      <Wrapper className="tickets-container">
         {ticketsSliced.map((item) => {
           return (
             <button
@@ -147,9 +123,9 @@ function Tickets({ tickets }) {
           );
         })}
         <button className="show-more-btn" onClick={() => setIsShowMoreTickets((prev) => !prev)}>
-          <span className="dots">. . .</span>
+          <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
         </button>
-        <button
+        {/* <button
           className="ticket-btn create-ticket-btn"
           onClick={() => {
             if (isEditLocked != true) setshowNewTicketInputModal(true);
@@ -164,10 +140,72 @@ function Tickets({ tickets }) {
         >
           <ion-icon className="delete-ticket-icon" name="trash-outline"></ion-icon>
           <span>Delete active Ticket</span>
-        </button>
-      </div>
+        </button> */}
+      </Wrapper>
     </>
   );
 }
+
+const Wrapper = styled.div`
+  position: relative;
+  margin-left: 64px;
+  height: 60px;
+  padding-top: 1rem;
+  padding-left: 2.8rem;
+  max-width: calc(100vw - 64px);
+  /* display: grid;
+  grid-template-columns: 1fr 1fr 1fr 40px; */
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  justify-content: center;
+  background-color: #eeee;
+  border-bottom: 1px solid #bebebe;
+  button {
+    background: none;
+    border: none;
+  }
+
+  .show-more-btn {
+    /* left: 0; */
+    /* width: 20px; */
+    padding-right: 1rem;
+    ion-icon {
+      width: 24px;
+      height: 24px;
+      color: #777;
+    }
+
+    ion-icon:hover {
+      color: #333;
+    }
+  }
+
+  .ticket-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 24px;
+    width: 100%;
+    height: 24px;
+    border-radius: 4px;
+    background: rgb(212, 212, 212);
+    border: none;
+    color: #777;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .ticket-btn:hover {
+    background-color: #dfdfdf;
+  }
+  .ticket-btn.active {
+    background-color: #9c9c9c;
+    color: #fff;
+  }
+  .ticket-btn.active:hover {
+    color: #fff;
+    background-color: #4f4f4f;
+  }
+`;
 
 export default Tickets;
