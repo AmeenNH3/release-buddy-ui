@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Navbar from "./components/Navbar/Navbar";
+import Toolbar from "./components/Toolbar/Toolbar";
 import Stats from "./components/Stats/Stats";
 import Table from "./components/Table/Table";
 import Tickets from "./components/Tickets/Tickets";
@@ -43,6 +44,11 @@ function Dashboard() {
     <>
       <main className="main">
         <Navbar></Navbar>
+        <Toolbar
+          tickets={tickets}
+          tableEditLock={tableEditLock}
+          changeTableEditLock={changeTableEditLock}
+        ></Toolbar>
         {/* <Stats></Stats> */}
         {/* <Tickets
           tickets={tickets}

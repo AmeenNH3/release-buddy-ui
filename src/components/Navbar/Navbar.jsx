@@ -31,6 +31,9 @@ function Navbar() {
 }
 
 const Wrapper = styled.div`
+  position: absolute;
+  left: 0;
+  top: 0;
   width: 64px;
   height: 100vh;
   background-color: #fff;

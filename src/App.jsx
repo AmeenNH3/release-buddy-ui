@@ -1,6 +1,7 @@
 import React from "react";
 import Dashboard from "./Dashboard";
 import Landing from "./pages/Landing";
+
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 function App() {
   return (
