@@ -1,7 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import DashboardIcon from "../../assets/images/Dashboard.svg";
+import { useNavigate } from "react-router-dom";
+import { clearValues, logoutUser } from "../../features/user/userSlice";
+import { useDispatch } from "react-redux";
 function Navbar() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   return (
     <Wrapper className="navbar">
       <div className="nav-header">
@@ -22,7 +27,13 @@ function Navbar() {
         <button>
           <ion-icon name="settings-outline"></ion-icon>
         </button>
-        <button>
+        <button
+          onClick={() => {
+            dispatch(clearValues());
+            dispatch(logoutUser());
+            navigate("/");
+          }}
+        >
           <ion-icon name="log-out-outline"></ion-icon>
         </button>
       </div>
