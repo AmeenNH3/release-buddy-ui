@@ -51,9 +51,9 @@ function Landing() {
 const Wrapper = styled.div`
   background: linear-gradient(
     240.57deg,
-    rgba(107, 193, 255, 0.35) 1.38%,
+    rgba(216, 215, 220, 0.35) 1.38%,
     rgba(255, 255, 255, 0) 99.62%,
-    #f9fbfd 99.62%
+    #ffffff 100%
   );
   height: 100vh;
   button {
