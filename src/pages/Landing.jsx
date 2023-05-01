@@ -59,7 +59,7 @@ function Landing() {
                 <ion-icon name="mail-outline"></ion-icon>
                 <input
                   required
-                  type="text"
+                  type="email"
                   name=""
                   id=""
                   placeholder="Email"
@@ -70,7 +70,7 @@ function Landing() {
                 <ion-icon name="key-outline"></ion-icon>
                 <input
                   required
-                  type="text"
+                  type="password"
                   name=""
                   id=""
                   placeholder="Password"
@@ -94,12 +94,13 @@ function Landing() {
 }
 
 const Wrapper = styled.div`
-  background: linear-gradient(
+  /* background: linear-gradient(
     240.57deg,
     rgba(216, 215, 220, 0.35) 1.38%,
     rgba(255, 255, 255, 0) 99.62%,
     #ffffff 100%
-  );
+  ); */
+  background: linear-gradient(116.87deg, #ffffff 2.98%, rgba(175, 175, 175, 0.38) 103.47%);
   height: 100vh;
   button {
     border: none;
@@ -120,7 +121,7 @@ const Wrapper = styled.div`
     grid-template-columns: 2fr 1fr;
     align-items: center;
     justify-content: space-between;
-    z-index: 2;
+    z-index: 10;
   }
 
   .register-btn {
@@ -209,7 +210,7 @@ const Wrapper = styled.div`
     bottom: 0;
     left: 50%;
     transform: translate(-50%, 0);
-    z-index: -1;
+    z-index: 0;
   }
 
   img {

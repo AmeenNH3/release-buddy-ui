@@ -9,15 +9,15 @@ function RegisterPage() {
         <form className="register-form">
           <div className="register-input-container">
             <ion-icon name="mail-outline"></ion-icon>
-            <input type="text" name="" id="" placeholder="Email" />
+            <input type="email" name="" id="" placeholder="Email" />
           </div>
           <div className="register-input-container">
             <ion-icon name="key-outline"></ion-icon>
-            <input type="text" name="" id="" placeholder="Password" />
+            <input type="password" name="" id="" placeholder="Password" />
           </div>
           <div className="register-input-container">
             <ion-icon name="key-outline"></ion-icon>
-            <input type="text" name="" id="" placeholder="Confirm Password" />
+            <input type="password" name="" id="" placeholder="Confirm Password" />
           </div>
           <div className="register-input-container">
             <button type="submit" className="register-btn">
@@ -33,12 +33,7 @@ function RegisterPage() {
 const Wrapper = styled.div`
   width: 100%;
   height: 100vh;
-  background: linear-gradient(
-    240.57deg,
-    rgba(136, 136, 136, 0.35) 1.38%,
-    rgba(255, 255, 255, 0) 99.62%,
-    #ffffff 100%
-  );
+  background: linear-gradient(116.87deg, #ffffff 2.98%, rgba(175, 175, 175, 0.38) 103.47%);
   /* background: red; */
   display: flex;
   flex-direction: column;
