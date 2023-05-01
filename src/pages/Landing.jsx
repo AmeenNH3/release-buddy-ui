@@ -1,9 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../assets/images/Logo.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import homeImage from "../assets/images/home-image.svg";
 import styled from "styled-components";
+import { loginUser } from "../features/user/userSlice";
+import { useDispatch, useSelector } from "react-redux";
 function Landing() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { user } = useSelector((state) => state.user);
+
+  const [showErrorMessage, setErrorMessage] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  useEffect(() => {
+    if (user) navigate("/dashboard");
+  }, [user, navigate]);
+
+  const loginFormSubmitHandler = (e) => {
+    e.preventDefault();
+    if (email && password) {
+      dispatch(loginUser({ email, password }));
+      console.log("form submitted");
+    }
+  };
+
   return (
     <>
       <Wrapper className="landing-container">
@@ -32,17 +54,33 @@ function Landing() {
             </div>
           </div>
           <div className="form-container">
-            <form className="login-form" action="">
+            <form className="login-form" onSubmit={loginFormSubmitHandler}>
               <div className="login-input-container">
                 <ion-icon name="mail-outline"></ion-icon>
-                <input type="text" name="" id="" placeholder="Email" />
+                <input
+                  required
+                  type="text"
+                  name=""
+                  id=""
+                  placeholder="Email"
+                  onChange={(e) => setEmail(e.target.value)}
+                />
               </div>
               <div className="login-input-container">
                 <ion-icon name="key-outline"></ion-icon>
-                <input type="text" name="" id="" placeholder="Password" />
+                <input
+                  required
+                  type="text"
+                  name=""
+                  id=""
+                  placeholder="Password"
+                  onChange={(e) => setPassword(e.target.value)}
+                />
               </div>
               <div className="login-input-container">
-                <button className="login-btn">Login</button>
+                <button type="submit" className="login-btn">
+                  Login
+                </button>
               </div>
             </form>
           </div>
