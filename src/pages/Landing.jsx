@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "../assets/images/Logo.svg";
-
+import { Link } from "react-router-dom";
 import homeImage from "../assets/images/home-image.svg";
 import styled from "styled-components";
 function Landing() {
@@ -12,7 +12,9 @@ function Landing() {
             <img src={logo} alt="Logo" />
           </div>
           <div className="l-button-container">
-            <button className="register-btn">Register</button>
+            <Link className="register-btn" to="/register">
+              Register
+            </Link>
           </div>
         </div>
         <div className="hero-content-container">
@@ -23,6 +25,11 @@ function Landing() {
             <p className="hero-text">
               Everything you need for tracking <br></br> your release and more.
             </p>
+            <div className="l-button-container">
+              <Link className="register-btn cta-btn" to="/register">
+                Register Now!
+              </Link>
+            </div>
           </div>
           <div className="form-container">
             <form className="login-form" action="">
@@ -79,18 +86,32 @@ const Wrapper = styled.div`
   }
 
   .register-btn {
+    display: block;
+    text-decoration: none;
+    color: #257ebe;
     font-size: 14px;
     font-weight: 600;
     /* background-color: red; */
     padding: 0.8rem 1.6rem;
-    border: none;
+    border: 1px solid #257ebe;
     border-radius: 4px;
-    box-shadow: 0px 4px 9px 0px rgba(89, 89, 89, 0.199);
+    /* box-shadow: 0px 4px 9px 0px rgba(89, 89, 89, 0.199); */
     cursor: pointer;
-    background-color: #fff;
+    /* background-color: #fff; */
     transition: all 0.2s;
   }
 
+  .cta-btn {
+    display: inline-block;
+    margin-top: 1.5rem;
+    background-color: #257ebe;
+    color: #fff;
+  }
+  .register-btn.cta-btn:hover {
+    color: #fff;
+    background-color: #2e2e2e;
+    border-color: #2e2e2e;
+  }
   .register-btn:hover {
     color: #fff;
     background-color: #257ebe;
@@ -150,7 +171,7 @@ const Wrapper = styled.div`
     bottom: 0;
     left: 50%;
     transform: translate(-50%, 0);
-    /* z-index: -1; */
+    z-index: -1;
   }
 
   img {
@@ -169,6 +190,11 @@ const Wrapper = styled.div`
     box-shadow: 0px 5px 9px rgba(0, 0, 0, 0.19);
     border-radius: 8px;
     text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .login-btn:hover {
+    background-color: #2e2e2e;
   }
 `;
 
