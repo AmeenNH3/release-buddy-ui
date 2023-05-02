@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import DashboardIcon from "../../assets/images/Dashboard.svg";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { clearValues, logoutUser } from "../../features/user/userSlice";
 import { useDispatch } from "react-redux";
 function Navbar() {
@@ -10,23 +10,23 @@ function Navbar() {
   return (
     <Wrapper className="navbar">
       <div className="nav-header">
-        <button>
+        <Link>
           <ion-icon name="apps-outline"></ion-icon>
-        </button>
+        </Link>
       </div>
       <div className="nav-body">
-        <button>
+        <Link to="/home">
           <ion-icon name="home-outline"></ion-icon>
-        </button>
-        <button>
+        </Link>
+        <Link to="/dashboard">
           <ion-icon name="apps-outline"></ion-icon>
-        </button>
-        <button>
+        </Link>
+        <Link to="/report">
           <ion-icon name="calendar-outline"></ion-icon>
-        </button>
-        <button>
+        </Link>
+        <Link to="/settings">
           <ion-icon name="settings-outline"></ion-icon>
-        </button>
+        </Link>
         <button
           onClick={() => {
             dispatch(clearValues());

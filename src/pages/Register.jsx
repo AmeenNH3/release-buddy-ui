@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-function RegisterPage() {
+function Register() {
   return (
     <Wrapper>
       <h1>Register Here!</h1>
@@ -108,4 +108,4 @@ const Wrapper = styled.div`
     border-color: #2e2e2e;
   }
 `;
-export default RegisterPage;
+export default Register;
