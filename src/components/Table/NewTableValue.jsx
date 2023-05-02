@@ -13,6 +13,8 @@ function NewTableValue({ showModalHandler }) {
   const [stackName, setstackName] = useState("");
   const [localBranch, setlocalBranch] = useState("");
   const [bundleNo, setbundleNo] = useState("");
+  const [owner, setOwner] = useState("");
+
   const [testedLB, settestedLB] = useState("");
   const [mergedToD, setmergedToD] = useState("");
   const [testedD, settestedD] = useState("");
@@ -41,6 +43,7 @@ function NewTableValue({ showModalHandler }) {
         mergedToM: mergedToM == "" ? "not-started" : mergedToM,
         testedM: testedM == "" ? "not-started" : testedM,
       }),
+      owner,
     });
 
     dispatch(
@@ -63,6 +66,7 @@ function NewTableValue({ showModalHandler }) {
             mergedToM: mergedToM == "" ? "not-started" : mergedToM,
             testedM: testedM == "" ? "not-started" : testedM,
           }),
+          owner,
         },
       })
     );
@@ -184,6 +188,16 @@ function NewTableValue({ showModalHandler }) {
               onChange={(e) => setbundleNo(e.target.value)}
             />
           </div>
+          <div className="input-container">
+            <input
+              type="text"
+              name="owner"
+              id="owner"
+              placeholder="Owner"
+              value={owner}
+              onChange={(e) => setOwner(e.target.value)}
+            />
+          </div>
           {/* <div className="input-container  select-container">
             <label htmlFor="status">Status</label>
             <select
@@ -216,6 +230,7 @@ function NewTableValue({ showModalHandler }) {
                 settestedD("");
                 setmergedToM("");
                 settestedM("");
+                setOwner("");
                 setStack(null);
                 showModalHandler();
                 dispatch(toggleEditLock(false));

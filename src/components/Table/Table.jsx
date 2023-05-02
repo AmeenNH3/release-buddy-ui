@@ -24,6 +24,7 @@ function Table({ data }) {
     "Tested Master",
     "Bundle No",
     "Status",
+    "Owner",
   ];
 
   const [addNewValue, setaddNewValue] = useState(false);
@@ -44,7 +45,7 @@ function Table({ data }) {
               setaddNewValue(true);
             }}
           >
-            + add new
+            + Insert
           </button>
           <button
             title={`${stacksToBeDeleted.length == 0 ? "select stacks to delete" : ""} `}
@@ -61,6 +62,14 @@ function Table({ data }) {
             }}
           >
             Delete
+          </button>
+          <button className="stacks-btn filter-btn">
+            <ion-icon name="filter-outline"></ion-icon>
+            Filter
+          </button>
+          <button className="stacks-btn filter-btn">
+            <ion-icon name="funnel-outline"></ion-icon>
+            Sort
           </button>
         </div>
         <table>

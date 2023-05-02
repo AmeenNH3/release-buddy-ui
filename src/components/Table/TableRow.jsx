@@ -46,6 +46,8 @@ function TableRow({ stack, index, forceUpdate }) {
         />
       </td>
       {keys.map((item, i) => {
+        console.log(item);
+        console.log(keyHeaders[i]);
         return (
           <TableValue
             headerName={keyHeaders[i]}
