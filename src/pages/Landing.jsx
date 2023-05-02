@@ -60,8 +60,8 @@ function Landing() {
                 <input
                   required
                   type="email"
-                  name=""
-                  id=""
+                  name="email"
+                  id="email"
                   placeholder="Email"
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -71,8 +71,8 @@ function Landing() {
                 <input
                   required
                   type="password"
-                  name=""
-                  id=""
+                  name="password"
+                  id="password"
                   placeholder="Password"
                   onChange={(e) => setPassword(e.target.value)}
                 />
