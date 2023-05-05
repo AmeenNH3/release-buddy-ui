@@ -43,8 +43,7 @@ function Dashboard() {
 
   return (
     <>
-      <main className="main">
-        <Navbar></Navbar>
+     
         <Toolbar
           tickets={tickets}
           tableEditLock={tableEditLock}
@@ -61,7 +60,7 @@ function Dashboard() {
           tableEditLock={tableEditLock}
           changeTableEditLock={changeTableEditLock}
         ></Table>
-      </main>
+    
     </>
   );
 }
