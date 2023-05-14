@@ -9,6 +9,15 @@ export const dataSlice = createSlice({
       {
         id: "example-ticket-100021",
         name: "Example",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipisicing elit. A eaque veniam excepturi facilis facere voluptatibus optio, maiores in ipsum fugiat perferendis. Temporibus exercitationem consectetur aliquid quidem voluptatibus. Aut, tempora eius.",
+        owner: "Sudhakar",
+        changeTicketNumber: "CH0012412",
+        releaseDate: "28.05.2023",
+        createdDate: "24.05.2023",
+        lastModifiedDate: "25.05.2023",
+        workingTeams: ["Yosemetie", "woodpeckers"],
+        status: "scheduled-for-release",
         stacks: [
           {
             id: uuidv4(),
@@ -210,6 +219,15 @@ export const dataSlice = createSlice({
       {
         id: uuidv4(),
         name: "Mongo Atlas",
+        description:
+          "Lorem ipsum dolor sit amet, consectetur adipisicing elit. A eaque veniam excepturi ",
+        owner: "Sudhakar",
+        workingTeams: ["Yosemetie", "woodpeckers"],
+        changeTicketNumber: "CH0012412",
+        releaseDate: "28.05.2023",
+        createdDate: "24.05.2023",
+        lastModifiedDate: "25.05.2023",
+        status: "scheduled-for-release",
         stacks: [
           {
             id: uuidv4(),
@@ -281,6 +299,15 @@ export const dataSlice = createSlice({
       {
         id: uuidv4(),
         name: "Monthly Release",
+        owner: "Sudhakar",
+        description:
+          " Temporibus exercitationem consectetur aliquid quidem voluptatibus. Aut, tempora eius.",
+        changeTicketNumber: "CH0012412",
+        workingTeams: ["Yosemetie", "woodpeckers"],
+        releaseDate: "28.05.2023",
+        createdDate: "24.05.2023",
+        lastModifiedDate: "25.05.2023",
+        status: "scheduled-for-release",
         stacks: [
           {
             id: uuidv4(),

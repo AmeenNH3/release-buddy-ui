@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { clearCheckedStacks, setActiveTicket } from "../../features/tickets/ticketsSlice";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 function Tickets({ tickets }) {
   const lockTable = useSelector((state) => state.active.isEditLocked);
   const [isEditLocked, setisEditLocked] = useState(lockTable);
@@ -41,38 +42,6 @@ function Tickets({ tickets }) {
 
   return (
     <>
-      {/* {showNewTicketInputModal ? (
-        <div className="new-ticket-input-modal">
-          <form className="new-ticket-input-form" onSubmit={newTicketFormOnSubmitHandler}>
-            <input
-              id="ticket-name"
-              name="ticket-name"
-              className="new-ticket-input"
-              type="text"
-              placeholder="Enter Ticket name"
-              value={newTicketName}
-              onChange={(e) => setNewTicketName(e.target.value)}
-            />
-
-            <div className="new-ticket-btn-container">
-              <button className="new-ticket-btn new-ticket-submit-btn" type="submit">
-                Create
-              </button>
-              <button
-                className="new-ticket-btn new-ticket-cancel-btn"
-                onClick={() => {
-                  setshowNewTicketInputModal(false);
-                  setNewTicketName("");
-                }}
-              >
-                Cancel
-              </button>
-            </div>
-          </form>
-        </div>
-      ) : (
-        ""
-      )} */}
       {isShowMoreTickets ? (
         <div className="show-more-modal">
           <button
@@ -107,7 +76,7 @@ function Tickets({ tickets }) {
       <Wrapper className="tickets-container">
         {ticketsSliced.map((item) => {
           return (
-            <button
+            <Link
               key={item.id}
               className={item.id == activeTicket ? "ticket-btn active" : "ticket-btn"}
               onClick={() => {
@@ -119,28 +88,12 @@ function Tickets({ tickets }) {
               }}
             >
               {item.name}
-            </button>
+            </Link>
           );
         })}
         <button className="show-more-btn" onClick={() => setIsShowMoreTickets((prev) => !prev)}>
           <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
         </button>
-        {/* <button
-          className="ticket-btn create-ticket-btn"
-          onClick={() => {
-            if (isEditLocked != true) setshowNewTicketInputModal(true);
-          }}
-        >
-          + Create new ticket
-        </button>
-        <button
-          className="delete-ticket-btn"
-          title="Delete active ticket"
-          onClick={deleteActiveTicketHandler}
-        >
-          <ion-icon className="delete-ticket-icon" name="trash-outline"></ion-icon>
-          <span>Delete active Ticket</span>
-        </button> */}
       </Wrapper>
     </>
   );
@@ -167,6 +120,7 @@ const Wrapper = styled.div`
   }
 
   .show-more-btn {
+    cursor: pointer;
     /* left: 0; */
     /* width: 20px; */
     padding-right: 1rem;
@@ -182,6 +136,9 @@ const Wrapper = styled.div`
   }
 
   .ticket-btn {
+    text-decoration: none;
+    font-family: "Nunito", sans-serif;
+    font-size: 14px;
     display: flex;
     align-items: center;
     justify-content: center;

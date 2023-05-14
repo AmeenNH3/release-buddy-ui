@@ -6,8 +6,9 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Register from "./pages/Register";
 import SharedLayout from "./components/SharedLayout";
 import Home from "./pages/Home";
-import Report from "./pages/Report";
+
 import Settings from "./pages/Settings";
+import Ticket from "./pages/Ticket";
 function App() {
   return (
     <>
@@ -25,7 +26,7 @@ function App() {
         >
           <Route path="dashboard" element={<Dashboard></Dashboard>}></Route>
           <Route path="home" element={<Home></Home>}></Route>
-          <Route path="report" element={<Report></Report>}></Route>
+          <Route path="ticket/:id" element={<Ticket></Ticket>}></Route>
           <Route path="settings" element={<Settings></Settings>}></Route>
         </Route>
       </Routes>
