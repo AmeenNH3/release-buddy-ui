@@ -1,13 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-function includesCheck(data, value) {
-  if (data == null) return false;
-  const newData = data.map((item) => {
-    if (item == value) return true;
-  });
-  return false;
-}
-
 export const ticketsSlice = createSlice({
   name: "active",
   initialState: {

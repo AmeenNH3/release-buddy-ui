@@ -3,10 +3,12 @@ import styled from "styled-components";
 import DashboardIcon from "../../assets/images/Dashboard.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { clearValues, logoutUser } from "../../features/user/userSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 function Navbar() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const activeTicket = useSelector((state) => state.active.activeTicket);
+
   return (
     <Wrapper className="navbar">
       <div className="nav-header">
@@ -21,8 +23,8 @@ function Navbar() {
         <Link to="/dashboard">
           <ion-icon name="apps-outline"></ion-icon>
         </Link>
-        <Link to="/report">
-          <ion-icon name="calendar-outline"></ion-icon>
+        <Link to={`/ticket/${activeTicket}`}>
+          <ion-icon name="ticket-outline"></ion-icon>
         </Link>
         <Link to="/settings">
           <ion-icon name="settings-outline"></ion-icon>
