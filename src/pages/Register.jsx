@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-function RegisterPage() {
+function Register() {
   return (
     <Wrapper>
       <h1>Register Here!</h1>
@@ -9,15 +9,20 @@ function RegisterPage() {
         <form className="register-form">
           <div className="register-input-container">
             <ion-icon name="mail-outline"></ion-icon>
-            <input type="email" name="" id="" placeholder="Email" />
+            <input type="email" name="email" id="email-register" placeholder="Email" />
           </div>
           <div className="register-input-container">
             <ion-icon name="key-outline"></ion-icon>
-            <input type="password" name="" id="" placeholder="Password" />
+            <input type="password" name="password" id="password-register" placeholder="Password" />
           </div>
           <div className="register-input-container">
             <ion-icon name="key-outline"></ion-icon>
-            <input type="password" name="" id="" placeholder="Confirm Password" />
+            <input
+              type="password"
+              name="confirm-password"
+              id="confirm-password-register"
+              placeholder="Confirm Password"
+            />
           </div>
           <div className="register-input-container">
             <button type="submit" className="register-btn">
@@ -108,4 +113,4 @@ const Wrapper = styled.div`
     border-color: #2e2e2e;
   }
 `;
-export default RegisterPage;
+export default Register;

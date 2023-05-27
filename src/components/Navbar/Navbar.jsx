@@ -1,32 +1,34 @@
 import React from "react";
 import styled from "styled-components";
 import DashboardIcon from "../../assets/images/Dashboard.svg";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { clearValues, logoutUser } from "../../features/user/userSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 function Navbar() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const activeTicket = useSelector((state) => state.active.activeTicket);
+
   return (
     <Wrapper className="navbar">
       <div className="nav-header">
-        <button>
+        <Link>
           <ion-icon name="apps-outline"></ion-icon>
-        </button>
+        </Link>
       </div>
       <div className="nav-body">
-        <button>
+        <Link to="/home">
           <ion-icon name="home-outline"></ion-icon>
-        </button>
-        <button>
+        </Link>
+        <Link to="/dashboard">
           <ion-icon name="apps-outline"></ion-icon>
-        </button>
-        <button>
-          <ion-icon name="calendar-outline"></ion-icon>
-        </button>
-        <button>
+        </Link>
+        <Link to={`/ticket/${activeTicket}`}>
+          <ion-icon name="ticket-outline"></ion-icon>
+        </Link>
+        <Link to="/settings">
           <ion-icon name="settings-outline"></ion-icon>
-        </button>
+        </Link>
         <button
           onClick={() => {
             dispatch(clearValues());

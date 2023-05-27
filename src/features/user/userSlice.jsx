@@ -59,9 +59,7 @@ const userSlice = createSlice({
       addUserToLocalStorage(state.user);
     },
     [loginUser.rejected]: (state, action) => {
-      console.log("User error");
-
-      console.log(action.payload);
+      alert("Please enter valid credentials");
     },
   },
 });

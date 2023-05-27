@@ -551,3 +551,7 @@ label {
 .delete-ticket-btn:hover {
   color: rgb(176, 0, 0);
 }
+
+.margin-left {
+  margin-left: 64px;
+}

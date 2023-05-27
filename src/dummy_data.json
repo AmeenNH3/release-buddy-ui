@@ -2,6 +2,12 @@
   {
     "id": 1,
     "name": "PPI Change",
+    "owner": "Sudhakar",
+    "changeTicketNumber": "CH0012412",
+    "releaseDate": "28.05.2023",
+    "createdDate": "24.05.2023",
+    "lastModifiedDate": "25.05.2023",
+    "status": "scheduled-for-release",
     "stacks": [
       {
         "id": 1,
@@ -73,6 +79,12 @@
   {
     "id": 2,
     "name": "Mongo Atlas",
+    "owner": "Vasuki",
+    "changeTicketNumber": "CH0012412",
+    "releaseDate": "28.05.2023",
+    "createdDate": "24.05.2023",
+    "lastModifiedDate": "26.05.2023",
+    "status": "abandoned",
     "stacks": [
       {
         "id": 2,
@@ -144,6 +156,12 @@
   {
     "id": 3,
     "name": "Monthly Release",
+    "owner": "Mansha",
+    "changeTicketNumber": "CH0012412",
+    "releaseDate": "28.05.2023",
+    "createdDate": "24.05.2023",
+    "lastModifiedDate": "27.05.2023",
+    "status": "released",
     "stacks": [
       {
         "id": 4,
