@@ -1,436 +1,49 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
 import { changeDataHelper, addNewStackHelper, deleteStacksHelper } from "../../components/helper";
+import { dummy } from "../../dummy";
 
-export const dataSlice = createSlice({
+const dataSlice = createSlice({
   name: "datas",
   initialState: {
-    data: [
-      {
-        id: "example-ticket-100021",
-        name: "Example",
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit. A eaque veniam excepturi facilis facere voluptatibus optio, maiores in ipsum fugiat perferendis. Temporibus exercitationem consectetur aliquid quidem voluptatibus. Aut, tempora eius.",
-        owner: "Sudhakar",
-        changeTicketNumber: "CH0012412",
-        releaseDate: "28.05.2023",
-        createdDate: "24.05.2023",
-        lastModifiedDate: "25.05.2023",
-        workingTeams: ["Yosemetie", "woodpeckers"],
-        status: "scheduled-for-release",
-        stacks: [
-          {
-            id: uuidv4(),
-            stackName: "stack_one",
-            localBranch: "local-branch-one",
-            testedLB: "completed",
-            mergedToD: "pending",
-            testedD: "not-started",
-            mergedToM: "not-started",
-            testedM: "not-started",
-            bundleNo: null,
-            status: "pending",
-            owner: "ameen",
-          },
-          {
-            id: uuidv4(),
-            stackName: "stack_two",
-            localBranch: "local-branch-two",
-            testedLB: "completed",
-            mergedToD: "completed",
-            testedD: "not-started",
-            mergedToM: "not-started",
-            testedM: "not-started",
-            bundleNo: null,
-            status: "pending",
-            owner: "ameen",
-          },
-          {
-            id: uuidv4(),
-            stackName: "stack_three",
-            localBranch: "local-branch-three",
-            testedLB: "completed",
-            mergedToD: "completed",
-            testedD: "pending",
-            mergedToM: "not-started",
-            testedM: "not-started",
-            bundleNo: null,
-            status: "pending",
-            owner: "ameen",
-          },
-          {
-            id: uuidv4(),
-            stackName: "stack_four",
-            localBranch: "local-branch-four",
-            testedLB: "completed",
-            mergedToD: "completed",
-            testedD: "completed",
-            mergedToM: "completed",
-            testedM: "completed",
-            bundleNo: 134,
-            status: "completed",
-            owner: "ameen",
-          },
-          {
-            id: uuidv4(),
-            stackName: "stack_five",
-            localBranch: "local-branch-five",
-            testedLB: "not-started",
-            mergedToD: "not-started",
-            testedD: "not-started",
-            mergedToM: "not-started",
-            testedM: "not-started",
-            bundleNo: null,
-            status: "not-started",
-            owner: "ameen",
-          },
-          {
-            id: uuidv4(),
-            stackName: "stack_one",
-            localBranch: "local-branch-one",
-            testedLB: "completed",
-            mergedToD: "pending",
-            testedD: "not-started",
-            mergedToM: "not-started",
-            testedM: "not-started",
-            bundleNo: null,
-            status: "pending",
-            owner: "ameen",
-          },
-          {
-            id: uuidv4(),
-            stackName: "stack_two",
-            localBranch: "local-branch-two",
-            testedLB: "completed",
-            mergedToD: "completed",
-            testedD: "not-started",
-            mergedToM: "not-started",
-            testedM: "not-started",
-            bundleNo: null,
-            status: "pending",
-            owner: "ameen",
-          },
-          {
-            id: uuidv4(),
-            stackName: "stack_three",
-            localBranch: "local-branch-three",
-            testedLB: "completed",
-            mergedToD: "completed",
-            testedD: "pending",
-            mergedToM: "not-started",
-            testedM: "not-started",
-            bundleNo: null,
-            status: "pending",
-            owner: "ameen",
-          },
-          {
-            id: uuidv4(),
-            stackName: "stack_four",
-            localBranch: "local-branch-four",
-            testedLB: "completed",
-            mergedToD: "completed",
-            testedD: "completed",
-            mergedToM: "completed",
-            testedM: "completed",
-            bundleNo: 134,
-            status: "completed",
-            owner: "ameen",
-          },
-          {
-            id: uuidv4(),
-            stackName: "stack_five",
-            localBranch: "local-branch-five",
-            testedLB: "not-started",
-            mergedToD: "not-started",
-            testedD: "not-started",
-            mergedToM: "not-started",
-            testedM: "not-started",
-            bundleNo: null,
-            status: "not-started",
-            owner: "ameen",
-          },
-          {
-            id: uuidv4(),
-            stackName: "stack_one",
-            localBranch: "local-branch-one",
-            testedLB: "completed",
-            mergedToD: "pending",
-            testedD: "not-started",
-            mergedToM: "not-started",
-            testedM: "not-started",
-            bundleNo: null,
-            status: "pending",
-            owner: "ameen",
-          },
-          {
-            id: uuidv4(),
-            stackName: "stack_two",
-            localBranch: "local-branch-two",
-            testedLB: "completed",
-            mergedToD: "completed",
-            testedD: "not-started",
-            mergedToM: "not-started",
-            testedM: "not-started",
-            bundleNo: null,
-            status: "pending",
-            owner: "ameen",
-          },
-          {
-            id: uuidv4(),
-            stackName: "stack_three",
-            localBranch: "local-branch-three",
-            testedLB: "completed",
-            mergedToD: "completed",
-            testedD: "pending",
-            mergedToM: "not-started",
-            testedM: "not-started",
-            bundleNo: null,
-            status: "pending",
-            owner: "ameen",
-          },
-          {
-            id: uuidv4(),
-            stackName: "stack_four",
-            localBranch: "local-branch-four",
-            testedLB: "completed",
-            mergedToD: "completed",
-            testedD: "completed",
-            mergedToM: "completed",
-            testedM: "completed",
-            bundleNo: 134,
-            status: "completed",
-            owner: "ameen",
-          },
-          {
-            id: uuidv4(),
-            stackName: "stack_five",
-            localBranch: "local-branch-five",
-            testedLB: "not-started",
-            mergedToD: "not-started",
-            testedD: "not-started",
-            mergedToM: "not-started",
-            testedM: "not-started",
-            bundleNo: null,
-            status: "not-started",
-            owner: "ameen",
-          },
-        ],
-      },
-      {
-        id: uuidv4(),
-        name: "Mongo Atlas",
-        description:
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit. A eaque veniam excepturi ",
-        owner: "Sudhakar",
-        workingTeams: ["Yosemetie", "woodpeckers"],
-        changeTicketNumber: "CH0012412",
-        releaseDate: "28.05.2023",
-        createdDate: "24.05.2023",
-        lastModifiedDate: "25.05.2023",
-        status: "scheduled-for-release",
-        stacks: [
-          {
-            id: uuidv4(),
-            stackName: "stackOne",
-            localBranch: "mongo_atlas",
-            testedLB: "completed",
-            mergedToD: "pending",
-            testedD: "not-started",
-            mergedToM: "not-started",
-            testedM: "not-started",
-            bundleNo: null,
-            status: "pending",
-            owner: "ameen",
-          },
-          {
-            id: uuidv4(),
-            stackName: "stackTwo",
-            localBranch: "mongo_atlas",
-            testedLB: "completed",
-            mergedToD: "completed",
-            testedD: "not-started",
-            mergedToM: "not-started",
-            testedM: "not-started",
-            bundleNo: null,
-            status: "pending",
-            owner: "ameen",
-          },
-          {
-            id: uuidv4(),
-            stackName: "stackThree",
-            localBranch: "mongo_atlas",
-            testedLB: "completed",
-            mergedToD: "completed",
-            testedD: "pending",
-            mergedToM: "not-started",
-            testedM: "not-started",
-            bundleNo: null,
-            status: "pending",
-            owner: "ameen",
-          },
-          {
-            id: uuidv4(),
-            stackName: "stackFour",
-            localBranch: "mongo_atlas",
-            testedLB: "completed",
-            mergedToD: "completed",
-            testedD: "completed",
-            mergedToM: "completed",
-            testedM: "completed",
-            bundleNo: 1245,
-            status: "completed",
-            owner: "ameen",
-          },
-          {
-            id: uuidv4(),
-            stackName: "stackFive",
-            localBranch: "mongo_atlas",
-            testedLB: "not-started",
-            mergedToD: "not-started",
-            testedD: "not-started",
-            mergedToM: "not-started",
-            testedM: "not-started",
-            bundleNo: null,
-            status: "not-started",
-            owner: "ameen",
-          },
-        ],
-      },
-      {
-        id: uuidv4(),
-        name: "Monthly Release",
-        owner: "Sudhakar",
-        description:
-          " Temporibus exercitationem consectetur aliquid quidem voluptatibus. Aut, tempora eius.",
-        changeTicketNumber: "CH0012412",
-        workingTeams: ["Yosemetie", "woodpeckers"],
-        releaseDate: "28.05.2023",
-        createdDate: "24.05.2023",
-        lastModifiedDate: "25.05.2023",
-        status: "scheduled-for-release",
-        stacks: [
-          {
-            id: uuidv4(),
-            stackName: "stackOne",
-            localBranch: "bug-fix",
-            testedLB: "completed",
-            mergedToD: "pending",
-            testedD: "not-started",
-            mergedToM: "not-started",
-            testedM: "not-started",
-            bundleNo: null,
-            status: "pending",
-            owner: "ameen",
-          },
-          {
-            id: uuidv4(),
-            stackName: "stackTwo",
-            localBranch: "region-change",
-            testedLB: "completed",
-            mergedToD: "completed",
-            testedD: "not-started",
-            mergedToM: "not-started",
-            testedM: "not-started",
-            bundleNo: null,
-            status: "pending",
-            owner: "ameen",
-          },
-          {
-            id: uuidv4(),
-            stackName: "stackThree",
-            localBranch: "bug-fix",
-            testedLB: "completed",
-            mergedToD: "completed",
-            testedD: "pending",
-            mergedToM: "not-started",
-            testedM: "not-started",
-            bundleNo: null,
-            status: "pending",
-            owner: "ameen",
-          },
-          {
-            id: uuidv4(),
-            stackName: "stackFour",
-            localBranch: "change-logo",
-            testedLB: "completed",
-            mergedToD: "completed",
-            testedD: "completed",
-            mergedToM: "completed",
-            testedM: "completed",
-            bundleNo: 1245,
-            status: "completed",
-            owner: "ameen",
-          },
-          {
-            id: uuidv4(),
-            stackName: "stackFive",
-            localBranch: "issue-fix",
-            testedLB: "not-started",
-            mergedToD: "not-started",
-            testedD: "not-started",
-            mergedToM: "not-started",
-            testedM: "not-started",
-            bundleNo: null,
-            status: "not-started",
-            owner: "ameen",
-          },
-          {
-            id: uuidv4(),
-            stackName: "stackSix",
-            localBranch: "issue-fix",
-            testedLB: "not-started",
-            mergedToD: "not-started",
-            testedD: "not-started",
-            mergedToM: "not-started",
-            testedM: "not-started",
-            bundleNo: null,
-            status: "not-started",
-            owner: "ameen",
-          },
-        ],
-      },
-    ],
+    data: dummy,
   },
   reducers: {
-    modifyData: (state, action) => {
-      let activeTicket = action.payload.activeTicket;
-      let stackId = action.payload.id;
-      let key = action.payload.headerName;
-      let value = action.payload.changedValue;
-      console.log(activeTicket, stackId, key, value);
+    modifyData: (
+      state,
+      { payload: { activeTicket, id: stackId, headerName: key, changedValue: value } }
+    ) => {
       state.data = changeDataHelper(state.data, activeTicket, stackId, key, value);
     },
-    addNewStack: (state, action) => {
-      let activeTicket = action.payload.activeTicket;
-      let dataN = action.payload.newStackData;
-      console.log(dataN);
+    addNewStack: (state, { payload: { activeTicket, newStackData: dataN } }) => {
       state.data = addNewStackHelper(state.data, activeTicket, dataN);
     },
-    deleteStacks: (state, action) => {
-      let activeTicket = action.payload.activeTicket;
-      let stacksIdsToBeDeleted = action.payload.stacksToBeDeleted;
-      console.log(activeTicket);
-      console.log(stacksIdsToBeDeleted);
+    deleteStacks: (
+      state,
+      { payload: { activeTicket, stacksToBeDeleted: stacksIdsToBeDeleted } }
+    ) => {
       state.data = deleteStacksHelper(state.data, activeTicket, stacksIdsToBeDeleted);
     },
-    addNewTicket: (state, action) => {
-      let newTicket = {
+    addNewTicket: (state, { payload: { name } }) => {
+      const newTicket = {
         id: uuidv4(),
-        name: action.payload.name,
+        name,
         stacks: [],
       };
-      state.data = [...state.data, newTicket];
+      state.data.push(newTicket);
     },
-    deleteActiveTicket: (state, action) => {
-      console.log(action.payload);
-      let newData = state.data.filter((ticket) => ticket.id != action.payload);
-
-      state.data = [...newData];
+    deleteActiveTicket: (state, { payload }) => {
+      state.data = state.data.filter((ticket) => ticket.id !== payload);
     },
   },
 });
 
-export default dataSlice.reducer;
-
 export const { modifyData, addNewStack, deleteStacks, addNewTicket, deleteActiveTicket } =
   dataSlice.actions;
+
+export default dataSlice.reducer;
+
+// import { createSlice, current } from "@reduxjs/toolkit";
+// import { v4 as uuidv4 } from "uuid";
+// import { changeDataHelper, addNewStackHelper, deleteStacksHelper } from "../../components/helper";
+// import { dummy } from "../../dummy";

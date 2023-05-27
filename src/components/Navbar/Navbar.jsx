@@ -24,7 +24,7 @@ function Navbar() {
           <ion-icon name="apps-outline"></ion-icon>
         </Link>
         <Link to={`/ticket/${activeTicket}`}>
-          <ion-icon name="calendar-outline"></ion-icon>
+          <ion-icon name="ticket-outline"></ion-icon>
         </Link>
         <Link to="/settings">
           <ion-icon name="settings-outline"></ion-icon>
