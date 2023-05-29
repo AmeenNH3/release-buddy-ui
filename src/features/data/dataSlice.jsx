@@ -28,9 +28,16 @@ const dataSlice = createSlice({
       state.data = deleteStacksHelper(state.data, activeTicket, stacksIdsToBeDeleted);
     },
     addNewTicket: (state, { payload: { name } }) => {
+      //Saving static values for now, once edit ticket page is added, those values will be added here
       const newTicket = {
         id: uuidv4(),
         name,
+        description: "",
+        status: "in_progress",
+        changeTicketNumber: "",
+        owner: "Ameen",
+        workingTeams: "woodpeckers,yellowjackets",
+        releaseDate: new Date(),
         stacks: [],
       };
       state.data.push(newTicket);
