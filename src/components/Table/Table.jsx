@@ -1,37 +1,45 @@
-import React from "react";
+import React, { useEffect } from "react";
 import TableRow from "./TableRow";
 import { useState, useReducer } from "react";
 import NewTableValue from "./NewTableValue";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteStacks } from "../../features/data/dataSlice";
 import { toggleEditLock } from "../../features/tickets/ticketsSlice";
+import { set } from "lodash";
+
+let tableHeaders = [
+  "",
+  "S.No",
+  "Stack Name",
+  "Local Branch",
+  "Tested Local Branch",
+  "Merged to Develop",
+  "Tested Develop",
+  " Merged to Master",
+  "Tested Master",
+  "Bundle No",
+  "Status",
+  "Owner",
+];
+
 function Table({ data }) {
   const dispatch = useDispatch();
-
   const stacksToBeDeleted = useSelector((state) => state.active.checkedStacks);
   const activeTicket = useSelector((state) => state.active.activeTicket);
+
   const [forceUpdate, setforceUpdate] = useState(false);
-  let stacksData = data[0].stacks;
-  let tableHeaders = [
-    "",
-    "S.No",
-    "Stack Name",
-    "Local Branch",
-    "Tested Local Branch",
-    "Merged to Develop",
-    "Tested Develop",
-    " Merged to Master",
-    "Tested Master",
-    "Bundle No",
-    "Status",
-    "Owner",
-  ];
+
+  const [stacks, setStacks] = useState([]);
 
   const [addNewValue, setaddNewValue] = useState(false);
 
   function showModalHandler() {
     setaddNewValue((prev) => !prev);
   }
+
+  useEffect(() => {
+    if (data.length != 0) setStacks(data[0].stacks);
+  }, [data]);
 
   return (
     <>
@@ -81,7 +89,7 @@ function Table({ data }) {
             </tr>
           </thead>
           <tbody>
-            {stacksData.map((stack, index) => {
+            {stacks.map((stack, index) => {
               return (
                 <TableRow
                   key={index}

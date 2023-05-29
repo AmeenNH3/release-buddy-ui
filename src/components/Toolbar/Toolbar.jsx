@@ -4,18 +4,33 @@ import { clearCheckedStacks, setActiveTicket } from "../../features/tickets/tick
 import { addNewTicket, deleteActiveTicket } from "../../features/data/dataSlice";
 import styled from "styled-components";
 import "../../main.css";
+import { saveData } from "../../features/data/dataThunks";
 function Toolbar({ tickets }) {
+  const dispatch = useDispatch();
+
   const lockTable = useSelector((state) => state.active.isEditLocked);
   const [isEditLocked, setisEditLocked] = useState(lockTable);
 
   const activeTicket = useSelector((state) => state.active.activeTicket);
-  const dispatch = useDispatch();
 
   const [isShowMoreTickets, setIsShowMoreTickets] = useState(false);
+
   const [ticketsSliced, setTicketsSliced] = useState(tickets.slice(0, 4));
+
   const [showNewTicketInputModal, setshowNewTicketInputModal] = useState(false);
   const [newTicketName, setNewTicketName] = useState("");
-  let slicedTicketIDs = ticketsSliced.map((i) => i.id);
+
+  // if (tickets.length == 0) {
+  //   return (
+  //     <>
+  //       <h1>No tickets available</h1>
+  //     </>
+  //   );
+  // }
+
+  // let slicedTicketIDs = [];
+
+  // slicedTicketIDs = ticketsSliced.map((i) => i.id);
 
   useEffect(() => {
     setisEditLocked(lockTable);
@@ -28,9 +43,9 @@ function Toolbar({ tickets }) {
     setTicketsSliced(tickets.slice(0, 4));
   }, [tickets]);
 
-  useEffect(() => {
-    slicedTicketIDs = ticketsSliced.map((i) => i.id);
-  }, [ticketsSliced]);
+  // useEffect(() => {
+  //   slicedTicketIDs = ticketsSliced.map((i) => i.id);
+  // }, [ticketsSliced]);
 
   const newTicketFormOnSubmitHandler = (e) => {
     e.preventDefault();
@@ -53,6 +68,10 @@ function Toolbar({ tickets }) {
     } else if (ticketsSliced.length == 1) {
       alert("Atleast one ticket should be present");
     }
+  };
+
+  const saveDataHandler = () => {
+    dispatch(saveData());
   };
 
   return (
@@ -110,7 +129,9 @@ function Toolbar({ tickets }) {
       </div>
 
       <div className="toolbar-container-save">
-        <button className="save-data-btn">Save</button>
+        <button className="save-data-btn" onClick={saveDataHandler}>
+          Save
+        </button>
       </div>
     </Wrapper>
   );

@@ -1,5 +1,5 @@
 export const isStatus = (value) => {
-  if (value == "pending" || value == "not-started" || value == "completed") return value;
+  if (value == "pending" || value == "not_started" || value == "completed") return value;
 
   return null;
 };
@@ -12,7 +12,7 @@ export const getIconName = (value) => {
   if (value == "completed") {
     iconName = "checkmark-outline";
   }
-  if (value == "not-started") {
+  if (value == "not_started") {
     iconName = "stop-circle-outline";
   }
   if (value == "in-progress") {
@@ -24,7 +24,7 @@ export const getIconName = (value) => {
 export const selectOptions = [
   {
     label: "Not Started",
-    value: "not-started",
+    value: "not_started",
   },
   {
     label: "Pending",
@@ -45,7 +45,11 @@ export function changeDataHelper(data, ticketID, stackID, keyName, changeValue) 
         if (item.id == stackID) {
           let stack = { ...item };
 
-          stack[keyName] = changeValue;
+          if (keyName == "bundleNo") {
+            stack[keyName] = parseInt(changeValue);
+          } else {
+            stack[keyName] = changeValue;
+          }
 
           stack["status"] = findStatus(stack);
 
@@ -104,13 +108,13 @@ export function findStatus(stack) {
     getStatusValue(stack.testedM);
 
   if (sum == 5) return "completed";
-  if (sum == -5) return "not-started";
+  if (sum == -5) return "not_started";
 
   return "pending";
 }
 
 export function getStatusValue(value) {
   if (value == "pending") return 0;
-  if (value == "not-started") return -1;
+  if (value == "not_started") return -1;
   if (value == "completed") return 1;
 }
