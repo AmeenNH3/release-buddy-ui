@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const ticketsSlice = createSlice({
   name: "active",
   initialState: {
-    activeTicket: "example-ticket-100021",
+    activeTicket: null,
     isEditLocked: false,
     checkedStacks: [],
   },

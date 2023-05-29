@@ -12,7 +12,7 @@ function NewTableValue({ showModalHandler }) {
 
   const [stackName, setstackName] = useState("");
   const [localBranch, setlocalBranch] = useState("");
-  const [bundleNo, setbundleNo] = useState("");
+  const [bundleNo, setbundleNo] = useState(0);
   const [owner, setOwner] = useState("");
 
   const [testedLB, settestedLB] = useState("");
@@ -30,18 +30,18 @@ function NewTableValue({ showModalHandler }) {
       id: uuidv4(),
       stackName,
       localBranch,
-      testedLB: testedLB == "" ? "not-started" : testedLB,
-      mergedToD: mergedToD == "" ? "not-started" : mergedToD,
-      testedD: testedD == "" ? "not-started" : testedD,
-      mergedToM: mergedToM == "" ? "not-started" : mergedToM,
-      testedM: testedM == "" ? "not-started" : testedM,
-      bundleNo,
+      testedLB: testedLB == "" ? "not_started" : testedLB,
+      mergedToD: mergedToD == "" ? "not_started" : mergedToD,
+      testedD: testedD == "" ? "not_started" : testedD,
+      mergedToM: mergedToM == "" ? "not_started" : mergedToM,
+      testedM: testedM == "" ? "not_started" : testedM,
+      bundleNo: parseInt(bundleNo),
       status: findStatus({
-        testedLB: testedLB == "" ? "not-started" : testedLB,
-        mergedToD: mergedToD == "" ? "not-started" : mergedToD,
-        testedD: testedD == "" ? "not-started" : testedD,
-        mergedToM: mergedToM == "" ? "not-started" : mergedToM,
-        testedM: testedM == "" ? "not-started" : testedM,
+        testedLB: testedLB == "" ? "not_started" : testedLB,
+        mergedToD: mergedToD == "" ? "not_started" : mergedToD,
+        testedD: testedD == "" ? "not_started" : testedD,
+        mergedToM: mergedToM == "" ? "not_started" : mergedToM,
+        testedM: testedM == "" ? "not_started" : testedM,
       }),
       owner,
     });
@@ -53,18 +53,18 @@ function NewTableValue({ showModalHandler }) {
           id: uuidv4(),
           stackName,
           localBranch,
-          testedLB: testedLB == "" ? "not-started" : testedLB,
-          mergedToD: mergedToD == "" ? "not-started" : mergedToD,
-          testedD: testedD == "" ? "not-started" : testedD,
-          mergedToM: mergedToM == "" ? "not-started" : mergedToM,
-          testedM: testedM == "" ? "not-started" : testedM,
-          bundleNo,
+          testedLB: testedLB == "" ? "not_started" : testedLB,
+          mergedToD: mergedToD == "" ? "not_started" : mergedToD,
+          testedD: testedD == "" ? "not_started" : testedD,
+          mergedToM: mergedToM == "" ? "not_started" : mergedToM,
+          testedM: testedM == "" ? "not_started" : testedM,
+          bundleNo: parseInt(bundleNo),
           status: findStatus({
-            testedLB: testedLB == "" ? "not-started" : testedLB,
-            mergedToD: mergedToD == "" ? "not-started" : mergedToD,
-            testedD: testedD == "" ? "not-started" : testedD,
-            mergedToM: mergedToM == "" ? "not-started" : mergedToM,
-            testedM: testedM == "" ? "not-started" : testedM,
+            testedLB: testedLB == "" ? "not_started" : testedLB,
+            mergedToD: mergedToD == "" ? "not_started" : mergedToD,
+            testedD: testedD == "" ? "not_started" : testedD,
+            mergedToM: mergedToM == "" ? "not_started" : mergedToM,
+            testedM: testedM == "" ? "not_started" : testedM,
           }),
           owner,
         },
@@ -180,7 +180,7 @@ function NewTableValue({ showModalHandler }) {
           </div>
           <div className="input-container">
             <input
-              type="text"
+              type="Number"
               name="bundleNo"
               id="bundleNo"
               placeholder="BundleNo"

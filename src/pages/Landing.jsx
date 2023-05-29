@@ -5,24 +5,27 @@ import homeImage from "../assets/images/home-image.svg";
 import styled from "styled-components";
 import { loginUser } from "../features/user/userSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { fetchInitialData } from "../features/data/dataThunks";
 function Landing() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { user } = useSelector((state) => state.user);
+  const { user, token } = useSelector((state) => state.user);
 
   const [showErrorMessage, setErrorMessage] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   useEffect(() => {
-    if (user) navigate("/dashboard");
-  }, [user, navigate]);
+    if (user && token) {
+      dispatch(fetchInitialData());
+      navigate("/dashboard");
+    }
+  }, [user, navigate, dispatch]);
 
   const loginFormSubmitHandler = (e) => {
     e.preventDefault();
     if (email && password) {
       dispatch(loginUser({ email, password }));
-      console.log("form submitted");
     }
   };
 

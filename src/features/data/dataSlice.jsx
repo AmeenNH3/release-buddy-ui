@@ -1,12 +1,15 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { v4 as uuidv4 } from "uuid";
 import { changeDataHelper, addNewStackHelper, deleteStacksHelper } from "../../components/helper";
-import { dummy } from "../../dummy";
-
+import { customFetch, removeUserFromLocalStorage } from "../user/userSlice";
+import { fetchInitialData, saveData } from "./dataThunks";
+import { clearStore } from "./dataThunks";
 const dataSlice = createSlice({
   name: "datas",
   initialState: {
-    data: dummy,
+    data: [],
+    status: "idle",
+    error: null,
   },
   reducers: {
     modifyData: (
@@ -25,15 +28,53 @@ const dataSlice = createSlice({
       state.data = deleteStacksHelper(state.data, activeTicket, stacksIdsToBeDeleted);
     },
     addNewTicket: (state, { payload: { name } }) => {
+      //Saving static values for now, once edit ticket page is added, those values will be added here
       const newTicket = {
         id: uuidv4(),
         name,
+        description: "",
+        status: "in_progress",
+        changeTicketNumber: "",
+        owner: "Ameen",
+        workingTeams: "woodpeckers,yellowjackets",
+        releaseDate: new Date(),
         stacks: [],
       };
       state.data.push(newTicket);
     },
     deleteActiveTicket: (state, { payload }) => {
       state.data = state.data.filter((ticket) => ticket.id !== payload);
+    },
+    logoutUser: (state) => {
+      removeUserFromLocalStorage();
+    },
+  },
+  extraReducers: {
+    [fetchInitialData.pending]: (state, action) => {
+      state.status = "loading";
+    },
+    [fetchInitialData.fulfilled]: (state, action) => {
+      state.status = "succeeded";
+      state.data = action.payload;
+    },
+    [fetchInitialData.rejected]: (state, action) => {
+      state.status = "failed";
+      state.error = action.payload;
+    },
+    [clearStore.fulfilled]: (state, action) => {
+      console.log("Store Cleared!");
+    },
+    [clearStore.rejected]: (state, action) => {
+      console.log("Failed to clear store!");
+    },
+    [saveData.pending]: (state, action) => {
+      console.log("Saving tickets");
+    },
+    [saveData.fulfilled]: (state, action) => {
+      console.log("Tickets saved!");
+    },
+    [saveData.rejected]: (state, action) => {
+      console.log("Failed to save tickets!");
     },
   },
 });
@@ -42,8 +83,3 @@ export const { modifyData, addNewStack, deleteStacks, addNewTicket, deleteActive
   dataSlice.actions;
 
 export default dataSlice.reducer;
-
-// import { createSlice, current } from "@reduxjs/toolkit";
-// import { v4 as uuidv4 } from "uuid";
-// import { changeDataHelper, addNewStackHelper, deleteStacksHelper } from "../../components/helper";
-// import { dummy } from "../../dummy";

@@ -148,7 +148,7 @@ td {
 
 .completed,
 .pending,
-.not-started,
+.not_started,
 .in-progress {
   display: flex;
   align-items: center;
@@ -171,7 +171,7 @@ td {
   color: rgba(156, 127, 23, 1);
 }
 
-.not-started {
+.not_started {
   /* background-color: var(--grey-bg); */
   color: var(--grey-text);
   color: rgba(167, 167, 167, 1);

@@ -12,9 +12,15 @@ function Tickets({ tickets }) {
   const dispatch = useDispatch();
 
   const [isShowMoreTickets, setIsShowMoreTickets] = useState(false);
-  const [ticketsSliced, setTicketsSliced] = useState(tickets.slice(0, 4));
 
-  let slicedTicketIDs = ticketsSliced.map((i) => i.id);
+  const [ticketsSliced, setTicketsSliced] = useState([]);
+
+  // let slicedTicketIDs = [];
+
+  // if (ticketsSliced.length != 0) {
+  //   console.log(ticketsSliced);
+  //   slicedTicketIDs = ticketsSliced.map((i) => i.id);
+  // }
 
   useEffect(() => {
     setisEditLocked(lockTable);
@@ -24,21 +30,51 @@ function Tickets({ tickets }) {
   }, [lockTable]);
 
   useEffect(() => {
-    setTicketsSliced(tickets.slice(0, 4));
-  }, [tickets]);
-
-  useEffect(() => {
-    slicedTicketIDs = ticketsSliced.map((i) => i.id);
-  }, [ticketsSliced]);
-
-  if (!slicedTicketIDs.includes(activeTicket)) {
-    let ticket = tickets.find((i) => i.id == activeTicket);
-    if (ticketsSliced.length < 4) {
-      setTicketsSliced((prev) => [...prev, ticket]);
+    if (activeTicket === null) {
+      // If activeTicket is null, set the first ticket as the active ticket.
+      if (tickets.length > 0) {
+        dispatch(setActiveTicket(tickets[0].id));
+      }
     } else {
-      setTicketsSliced((prev) => [...prev.slice(0, 3), ticket]);
+      const activeTicketIndex = tickets.findIndex((ticket) => ticket.id === activeTicket);
+      if (activeTicketIndex === -1) {
+        // Active ticket is not found, so we assume it has been deleted.
+        setTicketsSliced(tickets.slice(0, 4));
+        if (tickets.length > 0) {
+          dispatch(setActiveTicket(tickets[0].id));
+        }
+      } else {
+        if (activeTicketIndex >= 4) {
+          // Active ticket found, and it is in a position >= 4. Move it to the first position.
+          const newTickets = [
+            tickets[activeTicketIndex],
+            ...tickets.slice(0, activeTicketIndex),
+            ...tickets.slice(activeTicketIndex + 1),
+          ];
+          setTicketsSliced(newTickets.slice(0, 4));
+        } else {
+          // Active ticket found, but it is in a position < 4. So, no need to rearrange.
+          setTicketsSliced(tickets.slice(0, 4));
+        }
+      }
     }
-  }
+  }, [tickets, activeTicket]);
+  // useEffect(() => {
+  //   setTicketsSliced(tickets.slice(0, 4));
+  // }, [tickets]);
+
+  // useEffect(() => {
+  //   if (ticketsSliced.length != 0) slicedTicketIDs = ticketsSliced.map((i) => i.id);
+  // }, [ticketsSliced]);
+
+  // if (slicedTicketIDs.length != 0 && !slicedTicketIDs.includes(activeTicket)) {
+  //   let ticket = tickets.find((i) => i.id == activeTicket);
+  //   if (ticketsSliced.length < 4) {
+  //     setTicketsSliced((prev) => [...prev, ticket]);
+  //   } else {
+  //     setTicketsSliced((prev) => [...prev.slice(0, 3), ticket]);
+  //   }
+  // }
 
   return (
     <>
@@ -51,46 +87,54 @@ function Tickets({ tickets }) {
             <ion-icon className="show-more-modal-close-icon" name="close-outline"></ion-icon>
           </button>
           <div className="all-tickets-container">
-            {tickets.map((item) => {
-              return (
-                <button
-                  key={item.id}
-                  className={item.id == activeTicket ? "ticket-btn active" : "ticket-btn"}
-                  onClick={() => {
-                    if (isEditLocked != true) {
-                      dispatch(setActiveTicket(item.id));
-                      dispatch(clearCheckedStacks());
-                      setIsShowMoreTickets(false);
-                    }
-                  }}
-                >
-                  {item.name}
-                </button>
-              );
-            })}
+            {tickets.length != 0 ? (
+              tickets.map((item) => {
+                return (
+                  <button
+                    key={item.id}
+                    className={item.id == activeTicket ? "ticket-btn active" : "ticket-btn"}
+                    onClick={() => {
+                      if (isEditLocked != true) {
+                        dispatch(setActiveTicket(item.id));
+                        dispatch(clearCheckedStacks());
+                        setIsShowMoreTickets(false);
+                      }
+                    }}
+                  >
+                    {item.name}
+                  </button>
+                );
+              })
+            ) : (
+              <div className="no-tickets">No tickets</div>
+            )}
           </div>
         </div>
       ) : (
         ""
       )}
       <Wrapper className="tickets-container">
-        {ticketsSliced.map((item) => {
-          return (
-            <Link
-              key={item.id}
-              className={item.id == activeTicket ? "ticket-btn active" : "ticket-btn"}
-              onClick={() => {
-                if (isEditLocked != true) {
-                  dispatch(setActiveTicket(item.id));
-                  dispatch(clearCheckedStacks());
-                  setIsShowMoreTickets(false);
-                }
-              }}
-            >
-              {item.name}
-            </Link>
-          );
-        })}
+        {ticketsSliced.length !== 0 ? (
+          ticketsSliced.map((item) => {
+            return (
+              <Link
+                key={item.id}
+                className={item.id == activeTicket ? "ticket-btn active" : "ticket-btn"}
+                onClick={() => {
+                  if (isEditLocked != true) {
+                    dispatch(setActiveTicket(item.id));
+                    dispatch(clearCheckedStacks());
+                    setIsShowMoreTickets(false);
+                  }
+                }}
+              >
+                {item.name}
+              </Link>
+            );
+          })
+        ) : (
+          <div className="no-tickets">No tickets to show </div>
+        )}
         <button className="show-more-btn" onClick={() => setIsShowMoreTickets((prev) => !prev)}>
           <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
         </button>
@@ -162,6 +206,9 @@ const Wrapper = styled.div`
   .ticket-btn.active:hover {
     color: #fff;
     background-color: #4f4f4f;
+  }
+  .no-tickets {
+    color: #666;
   }
 `;
 
