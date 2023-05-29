@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { modifyData } from "../../features/data/dataSlice";
 import { isStatus, getIconName, selectOptions, findStatus } from "../helper";
 import { toggleEditLock } from "../../features/tickets/ticketsSlice";
+import { keyHeaders } from "../../Dashboard";
 
 function TableValue({ stack, value, id, headerName, rowIndex }) {
   const dispatch = useDispatch();
@@ -36,6 +37,11 @@ function TableValue({ stack, value, id, headerName, rowIndex }) {
   if (isStatus(statusValue)) {
     className = statusValue;
     iconName = getIconName(statusValue);
+  }
+
+  if (keyHeaders.includes(headerName) == false) {
+    //Only populate values that are in the keyHeaders array
+    return;
   }
 
   if (isEditable && isStatus(value) == null && headerName != "id") {
